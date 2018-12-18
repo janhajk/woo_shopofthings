@@ -17,7 +17,7 @@ var basic = function(app, connection) {
         });
     });
 
-    app.get('/products', auth.ensureAuthenticated, function(req, res) {
+    app.get('/products', /*auth.ensureAuthenticated,*/ function(req, res) {
         const woo = require(__dirname + '/lib/woo.js');
         woo.products(connection, function(e, data) {
             res.send(e ? e : data);
