@@ -3,7 +3,6 @@ var config = require(__dirname + '/config.js');
 
 var utils = require(__dirname + '/utils.js');
 var auth = require(__dirname + '/auth.js');
-var log = require(__dirname + '/log.js');
 
 
 // System
