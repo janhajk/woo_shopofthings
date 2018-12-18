@@ -1,0 +1,3 @@
++ Setup Database fo Products
+- Load all Products and Variations
+- List Products in Table with realtime Edit 

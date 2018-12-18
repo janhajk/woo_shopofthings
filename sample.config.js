@@ -16,6 +16,12 @@ google.GOOGLE_CLIENT_SECRET = "";
 google.user = '';
 exports.google = google;
 
+exports.woo = {
+   url: '',
+   consumerKey: '',
+   secret: ''
+};
+
 
 exports.baseurl = '';
 exports.port = 8091;
