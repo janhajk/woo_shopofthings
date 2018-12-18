@@ -22,11 +22,11 @@ var path = require('path');
 // Database
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-    host: config.database.host,
-    port: config.database.port,
-    user: config.database.user,
-    password: config.database.password,
-    database: config.database.db
+    host: config.sql.host,
+    port: config.sql.port,
+    user: config.sql.user,
+    password: config.sql.password,
+    database: config.sql.db
 });
 
 
