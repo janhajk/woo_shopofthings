@@ -22,6 +22,7 @@
         'Title': {
             formula: function(cell, item, cb) {
                 cell.value = '<a href="'+item.permalink+'" target="_blank">' + item.title + '</a>';
+                cb();
             }
         },
         'SKU': {
