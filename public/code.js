@@ -106,8 +106,8 @@
                     console.log(data);
                     frmLogin.hide();
                     
-                    for (let i in data) {
-                        let product = new Product(data[i]);
+                    for (let i in data.products) {
+                        let product = new Product(data.products[i]);
                         product.load();
 
                         // Add product to collection
