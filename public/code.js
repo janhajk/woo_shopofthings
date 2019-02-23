@@ -21,11 +21,8 @@
                 cb();
             }
         },
-        'title': {
-            formula: function(cell, product, cb) {
-                cell.value = product.title;
-                cb();
-            }
+        'Title': {
+            col: 'title'
         },
         'SKU': {
             formula: function(cell, product, cb) {
