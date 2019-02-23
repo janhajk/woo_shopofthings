@@ -198,10 +198,23 @@
             // table Body
             var tbody = document.createElement('tbody');
             t.appendChild(tbody);
+            
+            // Search Field
+            var iSearch = document.createElement('input');
+            iSearch.class = 'form-control';
+            iSearch.type = 'text';
+            iSearch.placeholder = 'Search..';
+            iSearch.onkeyup = function() {
+                var value = this.value.toLowerCase();
+                $(t).filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            };
 
             // Table Wrapper
             var div = document.createElement('div');
             div.className = 'table-responsive';
+            div.appendChild(iSearch);
             div.appendChild(t);
             return [div, t];
         };
