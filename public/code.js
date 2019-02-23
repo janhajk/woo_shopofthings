@@ -8,6 +8,7 @@
     // pp = parent-parent = position
     // hidden: true/false (default)
     // formula: function(cell, product, cb){cb()}
+    // class: 'hidden-xs hidden-sm etc' bootstrap class
     // image: {folder: '', filetype: 'png'}
     // align: 'center/left/right'
     // onclick: function(pp) {return function(){}}
@@ -16,66 +17,32 @@
     var cols = {
         'id': {
             hidden: true,
-            formula: function(cell, product, cb) {
-                cell.value = product.id;
-                cb();
-            }
+            col: 'id'
         },
         'Title': {
             col: 'title'
         },
         'SKU': {
-            formula: function(cell, product, cb) {
-                cell.value = product.sku;
-                cb();
-            }
-        }/*,
-        'Price': {
-            formula: function(cell, product, cb) {
-                cell.value = product.price;
-                cb();
-            }
+            col: 'SKU'
         },
         'Price': {
-            col: 'amount',
-            class: 'hidden-xs',
-            align: 'right'
+            col: 'price'
         },
         'Cost': {
-            formula: function(cell, product, cb) {
-                cell.value = product.stats.open.rate;
-                cb();
-            },
-            class: 'hidden-xs hidden-sm',
-            align: 'right'
+            col: 'cost'
         },
         'Shipping Class': {
-            formula: function(p, pp, cb) {
-                p.value = pp.last;
-                cb();
-            },
-            align: 'right',
-            onclick: function(pp) {
-                return function() {
-                    pp.detailsToggle();
-                };
-            }
+            col: 'shipping_class'
         },
         'Stock qty': {
-            formula: function(cell, product, cb) {
-                cell.value = product.stats.totals.btc;
-                cb();
-            },
-            round: 2,
-            sort: 'desc'
+            col: 'stock_qnatity'
         },
         'Categories': {
-            formula: function(cell, product, cb) {
-                cell.value = product.stats.totals.usd;
+            formula: function(cell, item, cb) {
+                cell.value = item.categories.join(', ');
                 cb();
-            },
-            round: 0
-        }*/
+            }
+        }
     };
       
       
