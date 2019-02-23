@@ -206,7 +206,7 @@
             iSearch.placeholder = 'Search..';
             iSearch.onkeyup = function() {
                 var value = this.value.toLowerCase();
-                $(t).find('tr').filter(function() {
+                $(tbody).find('tr').filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             };
