@@ -32,7 +32,7 @@
                 cell.value = product.sku;
                 cb();
             }
-        },
+        }/*,
         'Price': {
             formula: function(cell, product, cb) {
                 cell.value = product.price;
@@ -78,7 +78,7 @@
                 cb();
             },
             round: 0
-        }
+        }*/
     };
       
       
@@ -401,7 +401,7 @@
             }
             if (this.formula !== null) {
                 if (typeof this.formula === 'function') {
-                    this.formula(this, this.parent, cb);
+                    this.formula(this, parent, cb);
                 }
                 else if (this.formula.type === '*') {
                     this.value = parent.row[this.formula.x].value * parent.row[this.formula.y].value;
