@@ -197,7 +197,7 @@
                 items[i].domRow(table[1].tBodies[0]);
                 items[i].update();
             }
-            $.bootstrapSortable({ applyLast: true });
+            //$.bootstrapSortable({ applyLast: true });
         };
         /**
          * Products-Table
