@@ -23,7 +23,7 @@
             col: 'title'
         },
         'SKU': {
-            col: 'SKU'
+            col: 'sku'
         },
         'Price': {
             col: 'price'
@@ -42,6 +42,9 @@
                 cell.value = item.categories.join(', ');
                 cb();
             }
+        },
+        'Product Label': {
+            
         }
     };
       
