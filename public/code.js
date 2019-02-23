@@ -5,7 +5,7 @@
     // Main Table
     // Table Columns / Structure
     // p  = parent        = cell
-    // pp = parent-parent = position
+    // pp = parent-parent = item
     // hidden: true/false (default)
     // formula: function(cell, product, cb){cb()}
     // class: 'hidden-xs hidden-sm etc' bootstrap class
@@ -18,6 +18,12 @@
         'id': {
             hidden: true,
             col: 'id'
+        },
+        'image': {
+            formula: function(cell, item, cb) {
+                cell.value = 'img src="'+item.featured_src+'" height="50" />'
+                cb();
+            }
         },
         'Title': {
             formula: function(cell, item, cb) {
