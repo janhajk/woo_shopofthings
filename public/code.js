@@ -20,7 +20,9 @@
             col: 'id'
         },
         'Title': {
-            col: 'title'
+            formula: function(cell, item, cb) {
+                cell.value = '<a href="'+item.permalink+'" target="_blank">' + item.title + '</a>';
+            }
         },
         'SKU': {
             col: 'sku'
@@ -204,6 +206,7 @@
             iSearch.class = 'form-control';
             iSearch.type = 'text';
             iSearch.placeholder = 'Search..';
+            iSearch.style.marginBottom = '10px';
             iSearch.onkeyup = function() {
                 var value = this.value.toLowerCase();
                 $(tbody).find('tr').filter(function() {
