@@ -179,23 +179,23 @@
      */
     var Products = function(parent) {
 
-        // var that holds all positions
-        var products = [];
+        // var that holds all items
+        var items = [];
 
         this.parent = parent;
 
         // Adds a Position to the collecton
         this.add = function(product) {
-            products.push(product);
+            items.push(product);
         };
 
         // Renders a Position table
         this.tableRender = function() {
             var table = this.table();
             this.parent.appendChild(table[0]);
-            for (let i = 0; i < this.positions.length; i++) {
-                this.positions[i].domRow(table[1].tBodies[0]);
-                this.positions[i].update();
+            for (let i = 0; i < this.items.length; i++) {
+                this.items[i].domRow(table[1].tBodies[0]);
+                this.items[i].update();
             }
             $.bootstrapSortable({ applyLast: true });
         };
