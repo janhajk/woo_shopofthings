@@ -78,11 +78,6 @@ var routing = function(app) {
     app.use(passport.initialize());
     app.use(passport.session());
     
-    app.get('/login', function(req, res) {
-        fs.readFile(__dirname + '/public/login.html', 'utf-8', function(err, data) {
-            res.send(data);
-        });
-    });
 
     app.post('/login',
         passport.authenticate('local', { failureRedirect: '/login' }),
