@@ -306,6 +306,11 @@
             parent.appendChild(tr);
         };
 
+        /**
+         * Update item and all cells in item
+         */
+        this.update = function() {
+        };
 
         /**
          * 
