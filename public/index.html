@@ -1,27 +1,59 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>ShopOfThings Admin Console</title>
+   <!--<link rel="icon" href="images/logo/logo32.png">-->
 
-  <title>ShopOfThings Admin</title>
-  <meta name="description" content="">
-  <meta name="author" content="SitePoint">
+   <!-- jQuery -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   
+   <!-- Bootstrap -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="styles.css?v=1.0">
+   <!-- Bootstrap sortable -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+   <script src="3rdparty/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+   <link rel="stylesheet" href="3rdparty/bootstrap-sortable/Contents/bootstrap-sortable.css" />
+
+   <!-- Chart.js Bundle -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+   <!-- Highcharts.js Bundle -->
+   <script src="https://code.highcharts.com/stock/highstock.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data-2012-2022.min.js"></script>
+   
+   <!-- Async -->
+   <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/async/2.6.1/async.min.js"></script>-->
+   
+   <!-- Socket.io -->
+   <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>-->
+
+   <!-- Custom JS -->
+   <script src="code.js"></script>
+   
+   
+   <!--<link rel="stylesheet" type="text/css" href="styles.css" />-->
 
 
 </head>
 
-<body>
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="code.js"></script>
+<body style="padding-top:70px;">
+   <div class="container">
+      <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container" id="dashline">
+         </div>
+      </nav>
+      <div id="content">
+      </div>
+   </div>
 </body>
+
 </html>
-
-
-
 
 
 

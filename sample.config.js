@@ -1,3 +1,7 @@
+exports.users = [
+    { id: 1, username: 'karl', password: 'secret' }
+];
+
 exports.api_key = '';
 exports.sql = {
    host: '192.168.1.65',
@@ -9,12 +13,6 @@ exports.sql = {
 
 exports.cookiesecret = '';
 exports.cronSecret = '';
-
-var google = {};
-google.GOOGLE_CLIENT_ID = "";
-google.GOOGLE_CLIENT_SECRET = "";
-google.user = '';
-exports.google = google;
 
 exports.woo = {
    url: '',
