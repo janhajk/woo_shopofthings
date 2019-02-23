@@ -13,12 +13,13 @@
          * 
          */
         var request = new XMLHttpRequest();
-        request.open('GET', '/position', true);
+        request.open('GET', '/products', true);
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
                 try {
                     var data = JSON.parse(request.responseText);
-                   
+                    console.log(data);
+                    frmLogin.hide();
                 }
                 catch (e) {
                     console.log(e);
@@ -47,6 +48,7 @@
      * 
      */
     var Login = function() {
+        var div = document.createElement('div');
         var form = document.createElement('form');
         form.action = "/login";
         form.method = "POST";
@@ -62,6 +64,7 @@
         form.appendChild(username);
         form.appendChild(password);
         form.appendChild(submit);
+        div.appendChild(form);
         // var btn = document.createElement('button');
         // btn.type = 'button';
         // btn.style.clear = 'both';
@@ -74,13 +77,14 @@
         //     window.location = '/login';
         // };
         // this.btn = btn;
-        document.getElementById('dashline').appendChild(form);
+        document.getElementById('dashline').appendChild(div);
+        this.div = div;
         
         this.show = function() {
-            this.btn.style.display = 'block';
+            this.div.style.display = 'block';
         };
         this.hide = function() {
-            this.btn.style.display = 'none';
+            this.div.style.display = 'none';
         };
     };
     
