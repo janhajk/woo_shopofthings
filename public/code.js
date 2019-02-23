@@ -35,7 +35,7 @@
             col: 'shipping_class'
         },
         'Stock qty': {
-            col: 'stock_qantity'
+            col: 'stock_quantity'
         },
         'Categories': {
             formula: function(cell, item, cb) {
