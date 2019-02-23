@@ -53,7 +53,10 @@
             }
         },
         'Product Label': {
-            
+            formula: function(cell, item, cb) {
+                cell.value = '<a href="products/label/'+item.sku + '/' + item.permalink + '">Label</a>';
+                cb();
+            }
         }
     };
       

@@ -28,8 +28,8 @@ var basic = function(app, connection) {
         const label = require(__dirname + '/lib/label.js');
         const sku = req.params.sku;
         const link = req.params.link;
-        label.export(sku, link, function(e, data) {
-            res.send(e ? e : data);
+        label.send(sku, link, res, function(e, data) {
+            //res.send(e ? e : data);
         });
     });
     // app.get('/asset/:aid', auth.ensureAuthenticated, function(req, res) {
