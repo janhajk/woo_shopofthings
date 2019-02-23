@@ -194,8 +194,8 @@
             var table = this.table();
             this.parent.appendChild(table[0]);
             for (let i = 0; i < items.length; i++) {
-                this.items[i].domRow(table[1].tBodies[0]);
-                this.items[i].update();
+                items[i].domRow(table[1].tBodies[0]);
+                items[i].update();
             }
             $.bootstrapSortable({ applyLast: true });
         };
