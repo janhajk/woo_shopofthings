@@ -1,3 +1,4 @@
+/*global $ */
 (function() {
     
     var products;
@@ -54,7 +55,7 @@
         },
         'Product Label': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="products/label/'+item.sku + '/' + item.permalink + '">Label</a>';
+                cell.value = '<a href="products/label/'+item.sku + '/' + window.btoa(item.permalink) + '">Label</a>';
                 cb();
             }
         }
@@ -220,7 +221,7 @@
             iSearch.onkeyup = function() {
                 var value = this.value.toLowerCase();
                 $(tbody).find('tr').filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                 });
             };
 
