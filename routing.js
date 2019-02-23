@@ -23,6 +23,15 @@ var basic = function(app, connection) {
             res.send(e ? e : data);
         });
     });
+    
+    app.get('products/label/:sku/:link', auth.ensureAuthenticated, function(req, res) {
+        const label = require(__dirname + '/lib/label.js');
+        const sku = req.params.sku;
+        const link = req.params.link;
+        label.export(sku, link, function(e, data) {
+            res.send(e ? e : data);
+        });
+    });
     // app.get('/asset/:aid', auth.ensureAuthenticated, function(req, res) {
     //     var aid = req.params.aid;
     //     var assets = require(__dirname + '/lib/assets.js');
