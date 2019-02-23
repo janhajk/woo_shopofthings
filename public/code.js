@@ -21,7 +21,7 @@
         },
         'image': {
             formula: function(cell, item, cb) {
-                cell.value = 'img src="'+item.featured_src+'" height="50" />'
+                cell.value = '<img src="'+item.featured_src+'" height="50" />'
                 cb();
             }
         },
