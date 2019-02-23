@@ -65,18 +65,6 @@
         form.appendChild(password);
         form.appendChild(submit);
         div.appendChild(form);
-        // var btn = document.createElement('button');
-        // btn.type = 'button';
-        // btn.style.clear = 'both';
-        // btn.style.float = 'right';
-        // btn.className = 'btn btn-xs';
-        // btn.innerHTML = 'Login';
-        // btn.style.display = 'none';
-        // btn.style.display = 'none';
-        // btn.onclick = function() {
-        //     window.location = '/login';
-        // };
-        // this.btn = btn;
         document.getElementById('dashline').appendChild(div);
         this.div = div;
         
