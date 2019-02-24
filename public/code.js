@@ -55,7 +55,7 @@
         },
         'Product Label': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="products/label/'+item.sku + '/' + window.btoa(item.permalink) + '">Label</a>';
+                cell.value = '<a href="products/label/'+item.sku + '/' + window.btoa(item.permalink) + '">Label</a>&nbsp;&nbsp;<a href="https://shopofthings.ch/wp-admin/post.php?post='+item.id+'&action=edit">edit</a>';
                 cb();
             }
         }
