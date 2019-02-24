@@ -20,6 +20,11 @@ exports.woo = {
    secret: ''
 };
 
+exports.bitly = {
+   token: ''
+};
+
+
 
 exports.baseurl = '';
 exports.port = 8091;
