@@ -53,9 +53,16 @@
                 cb();
             }
         },
-        'Product Label': {
+        'Actions': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="products/label/'+item.sku + '/' + window.btoa(item.permalink) + '">Label</a>&nbsp;&nbsp;<a href="https://shopofthings.ch/wp-admin/post.php?post='+item.id+'&action=edit">edit</a>';
+                let links = [];
+                links.push({link: 'products/label/'+item.sku + '/' + window.btoa(item.permalink), title: 'Label'});
+                links.push({link: 'https://shopofthings.ch/wp-admin/post.php?post='+item.id+'&action=edit', title: 'edit'});
+                let a = [];
+                for (let i in links) {
+                    a.push('<a href="' + links[i].link + '" target="_blank">' + links[i].title + '</a>');
+                }
+                cell.value = a.join('&nbsp;&#124;&nbsp;');
                 cb();
             }
         }
@@ -188,7 +195,7 @@
             var t = document.createElement('table');
             t.className = ['table', 'table-bordered', 'table-hover', 'table-responsive', 'table-condensed', 'sortable'].join(' ');
             t.style.width = '100%';
-            t.style.maxWidth = '1000px';
+            t.style.maxWidth = '1200px';
 
             // table header
             var thead = document.createElement('thead');
