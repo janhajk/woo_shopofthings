@@ -30,7 +30,7 @@
         },
         'Title': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.title + '</a>';
+                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.name + '</a>';
                 cb();
             }
         },
@@ -41,7 +41,17 @@
             col: 'price'
         },
         'Cost': {
-            col: 'cost'
+            formula: function(cell, item, cb) {
+                let p = '?';
+                for (let i in item.meta_data) {
+                    if (item.meta_data[i].key === '_purchase_price') {
+                        p = item.meta_data[i].value;
+                        break;
+                    }
+                }
+                cell.value = p;
+                cb();
+            }
         },
         'Shipping Class': {
             col: 'shipping_class'
