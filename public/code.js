@@ -229,6 +229,7 @@
         submit.type = "button";
         submit.innerHTML = "save";
         submit.onlick = function() {
+            alert('saving...');
             editKeyValueById(this.id, this.key, value.value, function(){
                 alert(value.value);
             });
