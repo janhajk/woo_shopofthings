@@ -279,7 +279,7 @@
         };
         this.fadeOut = function(timeout) {
             window.setTimeout(function(){
-                $(self.div).fadeOut(3000);
+                return $(self.div).fadeOut(3000);
             }, timeout);
         };
     };
