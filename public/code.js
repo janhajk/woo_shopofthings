@@ -35,7 +35,10 @@
             }
         },
         'SKU': {
-            col: 'sku'
+            col: 'sku',
+            ondblclick: function(item) {
+                alert(item.sku);
+            }
         },
         'Price': {
             col: 'price'
@@ -138,7 +141,7 @@
 
 
     var editKeyValueById = function(id, key, value, cb) {
-        var params = [id, key, value];
+        var params = [id, key, window.btoa(value)];
         var request = new XMLHttpRequest();
         request.open('GET', '/products/' + params.join('/'), true);
         request.onload = function() {
@@ -397,6 +400,7 @@
         this.round = -1;
         this.image = 0;
         this.onclick = null;
+        this.ondblclick = null;
 
         // Set defaults, overwrites initial settings above
         for (let i in defaults) {
@@ -433,9 +437,10 @@
             td.style.cursor = 'pointer';
             td.className = this.class;
             td.onmousedown = function() { return false; };
-            // For Testing purpose
+            
+            // Click events
             td.ondblclick = function() {
-                console.log(this.value);
+                td.ondblclick = this.ondblclick(parent);
             };
             if (typeof(this.onclick) === 'function') {
                 td.onclick = this.onclick(parent);
