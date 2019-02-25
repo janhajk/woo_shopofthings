@@ -236,7 +236,7 @@
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
             editKeyValueById(self.id, self.key, value.value, function(){
-            BAlert.show('value saved!', 'Success');
+            bAlert.show('value saved!', 'Success');
             });
         });
         form.appendChild(value);
