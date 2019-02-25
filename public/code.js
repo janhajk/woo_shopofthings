@@ -439,9 +439,9 @@
             td.onmousedown = function() { return false; };
             
             // Click events
-            td.ondblclick = function() {
+            if (typeof(this.ondblclick) === 'function') {
                 td.ondblclick = this.ondblclick(parent);
-            };
+            }
             if (typeof(this.onclick) === 'function') {
                 td.onclick = this.onclick(parent);
             }
