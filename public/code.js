@@ -254,7 +254,7 @@
         };
         this.fadeOut = function(timeout) {
             window.setTimeout(function(){
-                $(self.div).fadeOut(3000);
+                return $(self.div).fadeOut(3000);
             }, timeout);
         };
     };
@@ -272,7 +272,7 @@
             self.div.className = 'alert alert-' + type;
             self.div.style.display = 'block';
             this.fadeOut(2000);
-            frmEdit.fadeOut(2000);
+            frmEdit.fadeOut(0);
         };
         this.hide = function() {
             this.div.style.display = 'none';
