@@ -252,6 +252,11 @@
         this.hide = function() {
             this.div.style.display = 'none';
         };
+        this.fadeOut = function(timeout) {
+            window.setTimeout(timeout, function(){
+                $(self.div).fadeOut(3000);
+            });
+        };
     };
     
     var BAlert = function() {
@@ -266,10 +271,16 @@
             self.div.innerHTML = msg;
             self.div.className = 'alert alert-' + type;
             self.div.style.display = 'block';
-            $(self.div).fadeOut(4000);
+            self.fadeOut(3000);
+            frmEdit.fadeOut(3000);
         };
         this.hide = function() {
             this.div.style.display = 'none';
+        };
+        this.fadeOut = function(timeout) {
+            window.setTimeout(timeout, function(){
+                $(self.div).fadeOut(3000);
+            });
         };
     };
 
