@@ -26,7 +26,7 @@ var connection = mysql.createConnection({
     port: config.sql.port,
     user: config.sql.user,
     password: config.sql.password,
-    database: config.sql.db
+    database: config.sql.database
 });
 
 
