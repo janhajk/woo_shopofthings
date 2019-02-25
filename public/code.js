@@ -88,7 +88,7 @@
         var request = new XMLHttpRequest();
         request.open('GET', '/products', true);
         request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
+            if (request.status >= 200 && request.status < 405) {
                 try {
                     var data = JSON.parse(request.responseText);
                     console.log(data);
