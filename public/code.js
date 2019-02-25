@@ -3,6 +3,7 @@
 
     var products;
     var frmLogin;
+    var frmEdit;
     /////////////////////////////////////////
     // Main Table
     // Table Columns / Structure
@@ -38,7 +39,8 @@
             col: 'sku',
             ondblclick: function(item) {
                 return function() {
-                    alert(item.sku);
+                    frmEdit.valueDom.value = item.sku;
+                    frmEdit.show();
                 };
             }
         },
@@ -94,6 +96,7 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         frmLogin = new Login();
+        frmEdit = new editFrm();
         var content = document.getElementById('content');
 
         // Init positions collection
@@ -195,6 +198,42 @@
         submit.value = "Login";
         form.appendChild(username);
         form.appendChild(password);
+        form.appendChild(username);
+        form.appendChild(password);
+        form.appendChild(submit);
+        div.appendChild(form);
+        document.getElementById('dashline').appendChild(div);
+        this.div = div;
+        div.style.display = 'none';
+
+        this.show = function() {
+            this.div.style.display = 'block';
+        };
+        this.hide = function() {
+            this.div.style.display = 'none';
+        };
+    };
+    
+    var editFrm = function() {
+        this.key = null;
+        this.value = null;
+        var div = document.createElement('div');
+        var form = document.createElement('form');
+        form.action = "/login";
+        form.method = "POST";
+        var value = document.createElement('input');
+        value.type = "text";
+        value.name = "username";
+        this.valueDom = value;
+        var submit = document.createElement('button');
+        submit.type = "button";
+        submit.value = "save";
+        submit.onlick = function() {
+            editKeyValueById(this.id, this.key, value.value, function(){
+                alert(value.value);
+            });
+        };
+        form.appendChild(value);
         form.appendChild(submit);
         div.appendChild(form);
         document.getElementById('dashline').appendChild(div);
