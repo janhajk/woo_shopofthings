@@ -220,6 +220,7 @@
         this.key = null;
         this.value = null;
         this.id = null;
+        var self = this;
         var div = document.createElement('div');
         var form = document.createElement('form');
         form.action = "/login";
@@ -232,8 +233,7 @@
         submit.type = "button";
         submit.innerHTML = "save";
         submit.addEventListener('click', function() {
-            alert('saving...');
-            editKeyValueById(this.id, this.key, value.value, function(){
+            editKeyValueById(self.id, self.key, value.value, function(){
                 alert(value.value);
             });
         });
