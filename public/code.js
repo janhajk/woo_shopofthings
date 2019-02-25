@@ -23,7 +23,8 @@
         },
         'image': {
             formula: function(cell, item, cb) {
-                cell.value = '<img src="' + item.images[0].src + '" height="50" />'
+                let src = (item.images.length)?item.images[0].src:'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
+                cell.value = '<img src="' + src + '" height="50" />'
                 cb();
             }
         },
