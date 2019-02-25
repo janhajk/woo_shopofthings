@@ -252,11 +252,6 @@
         this.hide = function() {
             this.div.style.display = 'none';
         };
-        this.fadeOut = function(timeout) {
-            window.setTimeout(function(){
-                return $(self.div).fadeOut(3000);
-            }, timeout);
-        };
     };
     
     var BAlert = function() {
@@ -271,8 +266,8 @@
             self.div.innerHTML = msg;
             self.div.className = 'alert alert-' + type;
             self.div.style.display = 'block';
+            frmEdit.hide();
             this.fadeOut(2000);
-            frmEdit.fadeOut(0);
         };
         this.hide = function() {
             this.div.style.display = 'none';
