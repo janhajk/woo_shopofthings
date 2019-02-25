@@ -149,7 +149,7 @@
         div.appendChild(form);
         document.getElementById('dashline').appendChild(div);
         this.div = div;
-        this.hide();
+        div.style.display = 'none';
         
         this.show = function() {
             this.div.style.display = 'block';
