@@ -253,9 +253,9 @@
             this.div.style.display = 'none';
         };
         this.fadeOut = function(timeout) {
-            window.setTimeout(timeout, function(){
+            window.setTimeout(function(){
                 $(self.div).fadeOut(3000);
-            });
+            }, timeout);
         };
     };
     
@@ -278,9 +278,9 @@
             this.div.style.display = 'none';
         };
         this.fadeOut = function(timeout) {
-            window.setTimeout(timeout, function(){
+            window.setTimeout(function(){
                 $(self.div).fadeOut(3000);
-            });
+            }, timeout);
         };
     };
 
