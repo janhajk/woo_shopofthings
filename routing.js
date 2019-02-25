@@ -32,7 +32,17 @@ var basic = function(app, connection) {
             //res.send(e ? e : data);
         });
     });
-
+    
+    app.get('/products/:id/:key/:value', auth.ensureAuthenticated, function(req, res) {
+        const woo = require(__dirname + '/lib/woo.js');
+        const id = req.params.id;
+        const key = req.params.key;
+        const value = req.params.value;
+        woo.edit(id, key, value, function(e, data) {
+            //res.send(e ? e : data);
+        });
+    });
+    
 };
 
 exports.basic = basic;

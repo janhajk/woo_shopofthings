@@ -1,8 +1,9 @@
 /*global $ */
 (function() {
-    
+
     var products;
-  /////////////////////////////////////////
+    var frmLogin;
+    /////////////////////////////////////////
     // Main Table
     // Table Columns / Structure
     // p  = parent        = cell
@@ -22,13 +23,13 @@
         },
         'image': {
             formula: function(cell, item, cb) {
-                cell.value = '<img src="'+item.featured_src+'" height="50" />'
+                cell.value = '<img src="' + item.featured_src + '" height="50" />'
                 cb();
             }
         },
         'Title': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="'+item.permalink+'" target="_blank">' + item.title + '</a>';
+                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.title + '</a>';
                 cb();
             }
         },
@@ -56,9 +57,9 @@
         'Actions': {
             formula: function(cell, item, cb) {
                 let links = [];
-                links.push({link: 'products/label/'+item.sku + '/' + window.btoa(item.permalink), title: 'label'});
-                links.push({link: item.permalink, title: 'view'});
-                links.push({link: 'https://shopofthings.ch/wp-admin/post.php?post='+item.id+'&action=edit', title: 'edit'});
+                links.push({ link: 'products/label/' + item.sku + '/' + window.btoa(item.permalink), title: 'label' });
+                links.push({ link: item.permalink, title: 'view' });
+                links.push({ link: 'https://shopofthings.ch/wp-admin/post.php?post=' + item.id + '&action=edit', title: 'edit' });
                 let a = [];
                 for (let i in links) {
                     a.push('<a href="' + links[i].link + '" target="_blank">' + links[i].title + '</a>');
@@ -68,11 +69,11 @@
             }
         }
     };
-      
-      
-      document.addEventListener('DOMContentLoaded', function() {
-            
-        var frmLogin = new Login();
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        frmLogin = new Login();
         var content = document.getElementById('content');
 
         // Init positions collection
@@ -93,7 +94,7 @@
                     var data = JSON.parse(request.responseText);
                     console.log(data);
                     frmLogin.hide();
-                    
+
                     for (let i in data.products) {
                         let product = new Product(data.products[i]);
                         product.load();
@@ -118,10 +119,39 @@
             console.log('There was an error in xmlHttpRequest!');
         };
         request.send();
-      });
-      
-      
-      
+    });
+
+
+    var editKeyValueById = function(id, key, value, cb) {
+        var params = [id, key, value];
+        var request = new XMLHttpRequest();
+        request.open('GET', '/products/' + params.join('/'), true);
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                try {
+                    var data = JSON.parse(request.responseText);
+                    console.log(data);
+                    cb();
+                }
+                catch (e) {
+                    console.log(e);
+                    console.log(new Date().toLocaleString() + ': not logged in');
+                    frmLogin.show();
+                    document.getElementById('content').innerHTML = 'Not logged in.';
+                }
+            }
+            else {
+                // Error
+            }
+        };
+        request.onerror = function() {
+            console.log('There was an error in xmlHttpRequest!');
+        };
+        request.send();
+    };
+
+
+
     /**
      * 
      * Login Form in Navbar
@@ -150,7 +180,7 @@
         document.getElementById('dashline').appendChild(div);
         this.div = div;
         div.style.display = 'none';
-        
+
         this.show = function() {
             this.div.style.display = 'block';
         };
@@ -158,8 +188,8 @@
             this.div.style.display = 'none';
         };
     };
-    
-    
+
+
     /**
      * 
      * Positions - Collection of Position
@@ -220,7 +250,7 @@
             // table Body
             var tbody = document.createElement('tbody');
             t.appendChild(tbody);
-            
+
             // Search Field
             var iSearch = document.createElement('input');
             iSearch.class = 'form-control';
@@ -247,12 +277,12 @@
     // -------------------------
     // END OF PositionCollection
     // -------------------------
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     /**
      * Product Object
      *
@@ -261,7 +291,7 @@
      */
     var Product = function(data) {
         var self = this;
-        
+
         // Store all data in object
         for (let i in data) {
             this[i] = data[i];
@@ -312,8 +342,7 @@
         /**
          * Update item and all cells in item
          */
-        this.update = function() {
-        };
+        this.update = function() {};
 
         /**
          * 
@@ -322,8 +351,7 @@
          * 
          * 
          */
-        this.detailsToggle = function() {
-        };
+        this.detailsToggle = function() {};
     };
     // -------------------------
     // END OF Product
@@ -354,15 +382,15 @@
         this.round = -1;
         this.image = 0;
         this.onclick = null;
-        
+
         // Set defaults, overwrites initial settings above
         for (let i in defaults) {
             this[i] = defaults[i];
         }
-        
+
         this.dom = document.createElement('td');
-        
-        
+
+
         /**
          * Renders Cell the first time
          * only called once
@@ -479,8 +507,8 @@
     // -------------------------
     // END OF Cell
     // -------------------------
-    
-    
+
+
     //
     // Helper Functions
     //
@@ -508,5 +536,5 @@
         if (number < 1000) return 1;
         return 0;
     };
-    
+
 })();

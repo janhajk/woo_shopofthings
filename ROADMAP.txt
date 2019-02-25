@@ -1,7 +1,6 @@
 + Setup Database fo Products
 + Load all Products
 + List Products in Table
++ Add Extended Properties (Cost, min_low, min_alert)
+- In Place edit of product properties
 - Handle Variations
-- In Place edit of product properties 
-- Add Extended Properties (Cost, min_low, min_alert
-- 
