@@ -4,6 +4,7 @@
     var products;
     var frmLogin;
     var frmEdit;
+    var bAlert;
     /////////////////////////////////////////
     // Main Table
     // Table Columns / Structure
@@ -98,7 +99,8 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         frmLogin = new Login();
-        frmEdit = new editFrm();
+        frmEdit = new EditFrm();
+        bAlert = new BAlert();
         var content = document.getElementById('content');
 
         // Init positions collection
@@ -216,7 +218,7 @@
         };
     };
     
-    var editFrm = function() {
+    var EditFrm = function() {
         this.key = null;
         this.value = null;
         this.id = null;
@@ -227,14 +229,14 @@
         form.method = "POST";
         var value = document.createElement('input');
         value.type = "text";
-        value.name = "username";
         this.valueDom = value;
         var submit = document.createElement('button');
         submit.type = "button";
         submit.innerHTML = "save";
+        submit.className = 'btn-success';
         submit.addEventListener('click', function() {
             editKeyValueById(self.id, self.key, value.value, function(){
-                alert(value.value);
+            BAlert.show('value saved!', 'Success');
             });
         });
         form.appendChild(value);
@@ -246,6 +248,25 @@
 
         this.show = function() {
             this.div.style.display = 'block';
+        };
+        this.hide = function() {
+            this.div.style.display = 'none';
+        };
+    };
+    
+    var BAlert = function() {
+        var div = document.createElement('div');
+        div.className = 'fixed-bottom '
+        document.getElementsByTagName("BODY")[0].appendChild(div);
+        div.style.display = 'none';
+        var self = this;        
+        this.div = div;
+        
+        this.show = function(msg, type) {
+            self.div.innerHTML = msg;
+            self.div.className = 'fixed-bottom ' + type;
+            this.div.style.display = 'block';
+            $(this.div).fadeOut(4000);
         };
         this.hide = function() {
             this.div.style.display = 'none';
