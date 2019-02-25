@@ -23,7 +23,7 @@
         },
         'image': {
             formula: function(cell, item, cb) {
-                cell.value = '<img src="' + item.featured_src + '" height="50" />'
+                cell.value = '<img src="' + item.images[0].src + '" height="50" />'
                 cb();
             }
         },
@@ -50,7 +50,11 @@
         },
         'Categories': {
             formula: function(cell, item, cb) {
-                cell.value = item.categories.join(', ');
+                let cats = [];
+                for (let i in item.categories) {
+                    cats.push(item.categories[i].name);
+                }
+                cell.value = cats.join(', ');
                 cb();
             }
         },
