@@ -37,7 +37,9 @@
         'SKU': {
             col: 'sku',
             ondblclick: function(item) {
-                alert(item.sku);
+                return function() {
+                    alert(item.sku);
+                };
             }
         },
         'Price': {
