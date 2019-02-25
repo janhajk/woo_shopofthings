@@ -39,6 +39,8 @@
             col: 'sku',
             ondblclick: function(item) {
                 return function() {
+                    frmEdit.id = item.id;
+                    frmEdit.key = 'sku';
                     frmEdit.valueDom.value = item.sku;
                     frmEdit.show();
                 };
@@ -217,6 +219,7 @@
     var editFrm = function() {
         this.key = null;
         this.value = null;
+        this.id = null;
         var div = document.createElement('div');
         var form = document.createElement('form');
         form.action = "/login";
