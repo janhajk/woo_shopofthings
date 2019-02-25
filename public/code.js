@@ -257,16 +257,16 @@
     var BAlert = function() {
         var div = document.createElement('div');
         div.role = 'alert';
-        document.getElementsByTagName("BODY")[0].appendChild(div);
+        document.getElementById('dashline').appendChild(div);
         div.style.display = 'none';
         var self = this;        
         this.div = div;
         
         this.show = function(msg, type) {
             self.div.innerHTML = msg;
-            self.div.className = 'fixed-bottom alert alert-' + type;
-            this.div.style.display = 'block';
-            $(this.div).fadeOut(4000);
+            self.div.className = 'alert alert-' + type;
+            self.div.style.display = 'block';
+            $(self.div).fadeOut(4000);
         };
         this.hide = function() {
             this.div.style.display = 'none';
