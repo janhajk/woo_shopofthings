@@ -271,7 +271,7 @@
             self.div.innerHTML = msg;
             self.div.className = 'alert alert-' + type;
             self.div.style.display = 'block';
-            self.fadeOut(2000);
+            this.fadeOut(2000);
             frmEdit.fadeOut(2000);
         };
         this.hide = function() {
@@ -279,7 +279,7 @@
         };
         this.fadeOut = function(timeout) {
             window.setTimeout(timeout, function(){
-                return function() {$(self.div).fadeOut(3000);};
+                $(self.div).fadeOut(3000);
             });
         };
     };
