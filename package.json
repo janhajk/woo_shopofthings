@@ -21,7 +21,7 @@
       "md5": "2.2.x",
       "node-cache": "4.x.x",
       "cloudscraper": "1.4.x",
-      "woocommerce-api": "1.4.x",
+      "woocommerce": "2.4.x",
       "archiver": "3.x.x",
       "bitly": "6.x.x"
    }
