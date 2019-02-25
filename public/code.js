@@ -227,7 +227,7 @@
         this.valueDom = value;
         var submit = document.createElement('button');
         submit.type = "button";
-        submit.value = "save";
+        submit.innerHTML = "save";
         submit.onlick = function() {
             editKeyValueById(this.id, this.key, value.value, function(){
                 alert(value.value);
