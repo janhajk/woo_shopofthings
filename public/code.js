@@ -228,12 +228,12 @@
         var submit = document.createElement('button');
         submit.type = "button";
         submit.innerHTML = "save";
-        submit.onlick = function() {
+        submit.addEventListener('click', function() {
             alert('saving...');
             editKeyValueById(this.id, this.key, value.value, function(){
                 alert(value.value);
             });
-        };
+        });
         form.appendChild(value);
         form.appendChild(submit);
         div.appendChild(form);
