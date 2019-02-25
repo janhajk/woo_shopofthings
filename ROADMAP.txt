@@ -1,3 +1,7 @@
 + Setup Database fo Products
-- Load all Products and Variations
-- List Products in Table with realtime Edit 
++ Load all Products
++ List Products in Table
+- Handle Variations
+- In Place edit of product properties 
+- Add Extended Properties (Cost, min_low, min_alert
+- 
