@@ -236,7 +236,7 @@
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
             editKeyValueById(self.id, self.key, value.value, function(){
-            bAlert.show('value saved!', 'Success');
+            bAlert.show('value saved!', 'success');
             });
         });
         form.appendChild(value);
@@ -256,7 +256,7 @@
     
     var BAlert = function() {
         var div = document.createElement('div');
-        div.className = 'fixed-bottom '
+        div.role = 'alert';
         document.getElementsByTagName("BODY")[0].appendChild(div);
         div.style.display = 'none';
         var self = this;        
@@ -264,7 +264,7 @@
         
         this.show = function(msg, type) {
             self.div.innerHTML = msg;
-            self.div.className = 'fixed-bottom ' + type;
+            self.div.className = 'fixed-bottom alert alert-' + type;
             this.div.style.display = 'block';
             $(this.div).fadeOut(4000);
         };
