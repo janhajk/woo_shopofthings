@@ -25,7 +25,7 @@
         },
         'image': {
             formula: function(cell, item, cb) {
-                let src = (item.images.length)?item.images[0].src:'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
+                let src = (item.images.length) ? item.images[0].src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
                 cell.value = '<img src="' + src + '" height="50" />'
                 cb();
             }
@@ -217,7 +217,7 @@
             this.div.style.display = 'none';
         };
     };
-    
+
     var EditFrm = function() {
         this.key = null;
         this.value = null;
@@ -235,8 +235,9 @@
         submit.innerHTML = "save";
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
-            editKeyValueById(self.id, self.key, value.value, function(){
-            bAlert.show('value saved!', 'success');
+            editKeyValueById(self.id, self.key, value.value, function() {
+                self.hide();
+                bAlert.show('value saved!', 'success');
             });
         });
         form.appendChild(value);
@@ -253,27 +254,26 @@
             this.div.style.display = 'none';
         };
     };
-    
+
     var BAlert = function() {
         var div = document.createElement('div');
         div.role = 'alert';
         document.getElementById('dashline').appendChild(div);
         div.style.display = 'none';
-        var self = this;        
+        var self = this;
         this.div = div;
-        
+
         this.show = function(msg, type) {
             self.div.innerHTML = msg;
             self.div.className = 'alert alert-' + type;
             self.div.style.display = 'block';
-            frmEdit.hide();
             this.fadeOut(2000);
         };
         this.hide = function() {
             this.div.style.display = 'none';
         };
         this.fadeOut = function(timeout) {
-            window.setTimeout(function(){
+            window.setTimeout(function() {
                 return $(self.div).fadeOut(3000);
             }, timeout);
         };
@@ -509,7 +509,7 @@
             td.style.cursor = 'pointer';
             td.className = this.class;
             td.onmousedown = function() { return false; };
-            
+
             // Click events
             if (typeof(this.ondblclick) === 'function') {
                 td.ondblclick = this.ondblclick(parent);
