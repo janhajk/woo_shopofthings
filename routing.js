@@ -39,6 +39,7 @@ var basic = function(app, connection) {
         const key = req.params.key;
         const value = req.params.value;
         woo.edit(id, key, value, function(e, data) {
+            res.send(data);
             //res.send(e ? e : data);
         });
     });
