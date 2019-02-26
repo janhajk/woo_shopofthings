@@ -142,7 +142,7 @@
                 try {
                     var data = JSON.parse(request.responseText);
                     console.log(data);
-                    frmLogin.hide();
+                    document.getElementById('dashline').removeChild(frmLogin.div);
 
                     for (let i in data) {
                         let product = new Product(data[i]);
