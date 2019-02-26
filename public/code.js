@@ -19,10 +19,6 @@
     // round: 2
     // sort: 'desc'
     var cols = {
-        'id': {
-            hidden: true,
-            col: 'id'
-        },
         'image': {
             formula: function(cell, item, cb) {
                 let src = (item.images.length) ? item.images[0].src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
@@ -31,10 +27,7 @@
             }
         },
         'Title': {
-            formula: function(cell, item, cb) {
-                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.name + '</a>';
-                cb();
-            }
+            col: 'name'
         },
         'SKU': {
             col: 'sku',
@@ -47,10 +40,6 @@
                     frmEdit.show();
                 };
             }
-        },
-        'Price': {
-            col: 'price',
-            round: 2
         },
         'Cost': {
             formula: function(cell, item, cb) {
@@ -66,11 +55,31 @@
             },
             round: 2
         },
+        'Cost_new': {
+          col: 'warehouse_cost',
+          round: 2
+        },
+        'Price': {
+            col: 'price',
+            round: 2
+        },
         'Shipping Class': {
             col: 'shipping_class'
         },
         'Stock qty': {
             col: 'stock_quantity',
+            round: 0
+        },
+        'Stk warning': {
+            col: 'warehouse_min_warning',
+            round: 0
+        },
+        'Stk alert': {
+            col: 'warehouse_min_alert',
+            round: 0
+        },
+        'ordered': {
+            col: 'warehouse_ordered',
             round: 0
         },
         'Categories': {
@@ -397,9 +406,6 @@
                         }
                     }
                 }
-                //$(tbody).find('tr').filter(function() {
-                //    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                //});
             };
 
             // Table Wrapper

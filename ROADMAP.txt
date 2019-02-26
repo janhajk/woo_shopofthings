@@ -1,4 +1,4 @@
-+ Setup Database fo Products
++ Setup Database for Products
 + Load all Products
 + List Products in Table
 + Add Extended Properties (Cost, min_low, min_alert)
@@ -12,3 +12,4 @@
 
 - show orders
 - print label "Adressetikette"
+- show Revenue and Profit (Profit from Cost)
