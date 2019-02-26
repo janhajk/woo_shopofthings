@@ -49,7 +49,8 @@
             }
         },
         'Price': {
-            col: 'price'
+            col: 'price',
+            round: 2
         },
         'Cost': {
             formula: function(cell, item, cb) {
@@ -62,13 +63,15 @@
                 }
                 cell.value = p;
                 cb();
-            }
+            },
+            round: 2
         },
         'Shipping Class': {
             col: 'shipping_class'
         },
         'Stock qty': {
-            col: 'stock_quantity'
+            col: 'stock_quantity',
+            round: 0
         },
         'Categories': {
             formula: function(cell, item, cb) {
