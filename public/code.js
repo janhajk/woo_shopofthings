@@ -43,6 +43,7 @@
                     frmEdit.id = item.id;
                     frmEdit.key = 'sku';
                     frmEdit.valueDom.value = item.sku;
+                    frmEdit.item = item;
                     frmEdit.show();
                 };
             }
@@ -222,6 +223,7 @@
         this.key = null;
         this.value = null;
         this.id = null;
+        this.item = null;
         var self = this;
         var div = document.createElement('div');
         var form = document.createElement('form');
@@ -236,6 +238,8 @@
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
             editKeyValueById(self.id, self.key, value.value, function() {
+                self.item[self.key] = self.value;
+                self.item.update();
                 self.hide();
                 bAlert.show('value saved!', 'success');
             });
@@ -248,6 +252,7 @@
             this.key = null;
             this.value = null;
             this.id = null;
+            this.item = null;
             self.hide();
         });
         form.appendChild(value);
@@ -443,7 +448,11 @@
         /**
          * Update item and all cells in item
          */
-        this.update = function() {};
+        this.update = function() {
+            for (let cell in this.row) {
+                this.row[cell].update();
+            }
+        };
 
         /**
          * 
