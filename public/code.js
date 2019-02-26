@@ -311,6 +311,7 @@
         this.show = function() {
             this.div.style.display = 'block';
             this.valueDom.focus();
+            this.valueDom.select();
         };
         this.hide = function() {
             this.div.style.display = 'none';
