@@ -56,8 +56,17 @@
             round: 2
         },
         'Cost_new': {
-          col: 'warehouse_cost',
-          round: 2
+            col: 'warehouse_cost',
+            round: 2,
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.id = item.id;
+                    frmEdit.key = 'warehouse_cost';
+                    frmEdit.valueDom.value = item.warehouse_cost;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            }
         },
         'Price': {
             col: 'price',
