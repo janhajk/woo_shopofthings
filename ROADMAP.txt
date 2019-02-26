@@ -2,5 +2,6 @@
 + Load all Products
 + List Products in Table
 + Add Extended Properties (Cost, min_low, min_alert)
-- In Place edit of product properties
++ In Place edit of product properties
+- Load all products (> 100)
 - Handle Variations

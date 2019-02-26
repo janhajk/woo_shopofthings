@@ -240,8 +240,19 @@
                 bAlert.show('value saved!', 'success');
             });
         });
+        var cancel = document.createElement('button');
+        cancel.type = "button";
+        cancel.innerHTML = "cancel";
+        cancel.className = 'btn';
+        cancel.addEventListener('click', function() {
+            this.key = null;
+            this.value = null;
+            this.id = null;
+            self.hide();
+        });
         form.appendChild(value);
         form.appendChild(submit);
+        form.appendChild(cancel);
         div.appendChild(form);
         document.getElementById('dashline').appendChild(div);
         this.div = div;
@@ -274,7 +285,7 @@
         };
         this.fadeOut = function(timeout) {
             window.setTimeout(function() {
-                return $(self.div).fadeOut(3000);
+                return $(self.div).fadeOut(1000);
             }, timeout);
         };
     };
