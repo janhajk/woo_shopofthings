@@ -381,9 +381,9 @@
                 input = this.value.toLowerCase().split(' ');
                 filter = input[0].toUpperCase();
                 table = tbody;
-                tr = table.getElementsByTagName("tr");
+                tr = table.rows;
                 for (i = 0; i < tr.length; i++) {
-                    td = tr.getElementsByTagName('td');
+                    td = tr.cells;
                     for (let s = 0; s < td.length; s++) {
                         if (td[s]) {
                             txtValue = td[s].textContent || td[s].innerText;
