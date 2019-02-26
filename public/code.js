@@ -379,7 +379,7 @@
             iSearch.onkeyup = function() {
                 var input, filter, table, tr, td, i, txtValue;
                 input = this.value.toLowerCase().split(' ');
-                filter = input[0].value.toUpperCase();
+                filter = input[0].toUpperCase();
                 table = tbody;
                 tr = table.getElementsByTagName("tr");
                 for (i = 0; i < tr.length; i++) {
