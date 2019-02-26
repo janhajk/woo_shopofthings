@@ -256,20 +256,20 @@
         var value = document.createElement('input');
         value.type = "text";
         this.valueDom = value;
-        value.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                editKeyValueById(self.id, self.key, value.value, function() {
-                    self.item[self.key] = value.value;
-                    self.item.update();
-                    this.key = null;
-                    this.value = null;
-                    this.id = null;
-                    this.item = null;
-                    self.hide();
-                    bAlert.show('value saved!', 'success');
-                });
-            }
-        });
+        // value.addEventListener('keyup', (e) => {
+        //     if (e.key === 'Enter') {
+        //         editKeyValueById(self.id, self.key, value.value, function() {
+        //             self.item[self.key] = value.value;
+        //             self.item.update();
+        //             this.key = null;
+        //             this.value = null;
+        //             this.id = null;
+        //             this.item = null;
+        //             self.hide();
+        //             bAlert.show('value saved!', 'success');
+        //         });
+        //     }
+        // });
 
         var submit = document.createElement('button');
         submit.type = "button";
