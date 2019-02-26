@@ -75,15 +75,15 @@
         'Shipping Class': {
             col: 'shipping_class'
         },
-        'Stock qty': {
+        'Qty': {
             col: 'stock_quantity',
             round: 0
         },
-        'Stk warning': {
+        'Qty 1': {
             col: 'warehouse_min_warning',
             round: 0
         },
-        'Stk alert': {
+        'Qty 2': {
             col: 'warehouse_min_alert',
             round: 0
         },
