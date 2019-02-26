@@ -93,7 +93,7 @@
                 for (let i in links) {
                     a.push('<a href="' + links[i].link + '" target="_blank">' + links[i].title + '</a>');
                 }
-                cell.value = a.join('&nbsp;&#124;&nbsp;');
+                cell.value = a.join('&nbsp;&#124;&nbsp;'); // |-Seperator
                 cb();
             }
         }
@@ -224,21 +224,21 @@
 
     var EditFrm = function() {
         var self = this;
-        
+
         this.key = null;
         this.value = null;
         this.id = null;
         this.item = null;
-        
+
         var div = document.createElement('div');
         var form = document.createElement('form');
         form.action = "/login";
         form.method = "POST";
-        
+
         var value = document.createElement('input');
         value.type = "text";
         this.valueDom = value;
-        
+
         var submit = document.createElement('button');
         submit.type = "button";
         submit.innerHTML = "save";
@@ -255,7 +255,7 @@
                 bAlert.show('value saved!', 'success');
             });
         });
-        
+
         var cancel = document.createElement('button');
         cancel.type = "button";
         cancel.innerHTML = "cancel";
@@ -267,7 +267,7 @@
             this.item = null;
             self.hide();
         });
-        
+
         form.appendChild(value);
         form.appendChild(submit);
         form.appendChild(cancel);
@@ -377,10 +377,26 @@
             iSearch.placeholder = 'Search..';
             iSearch.style.marginBottom = '10px';
             iSearch.onkeyup = function() {
-                var value = this.value.toLowerCase();
-                $(tbody).find('tr').filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                });
+                var input, filter, table, tr, td, i, txtValue;
+                input = this.value.toLowerCase().split(' ');
+                filter = input.value.toUpperCase();
+                table = tbody;
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        }
+                        else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+                //$(tbody).find('tr').filter(function() {
+                //    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                //});
             };
 
             // Table Wrapper
