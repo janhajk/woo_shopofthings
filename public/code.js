@@ -408,7 +408,8 @@
 
             // Table Wrapper
             var div = document.createElement('div');
-            div.className = 'table-responsive';
+            div.style.width = '100%';
+            //div.className = 'table-responsive';
             div.appendChild(iSearch);
             div.appendChild(t);
             return [div, t];
