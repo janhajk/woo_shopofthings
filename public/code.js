@@ -354,7 +354,6 @@
         this.table = function() {
             var t = document.createElement('table');
             t.className = ['table', 'table-bordered', 'table-hover', 'table-responsive', 'table-condensed', 'sortable'].join(' ');
-            t.style.width = '100%';
 
             // table header
             var thead = document.createElement('thead');
