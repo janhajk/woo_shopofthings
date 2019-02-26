@@ -383,7 +383,7 @@
                 table = tbody;
                 tr = table.rows;
                 for (i = 0; i < tr.length; i++) {
-                    td = tr.cells;
+                    td = tr[i].cells;
                     for (let s = 0; s < td.length; s++) {
                         if (td[s]) {
                             txtValue = td[s].textContent || td[s].innerText;
