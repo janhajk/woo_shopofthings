@@ -330,14 +330,14 @@
             self.div.innerHTML = msg;
             self.div.className = 'alert alert-' + type;
             self.div.style.display = 'block';
-            this.fadeOut(2000);
+            this.fadeOut(500);
         };
         this.hide = function() {
             this.div.style.display = 'none';
         };
         this.fadeOut = function(timeout) {
             window.setTimeout(function() {
-                return $(self.div).fadeOut(1000);
+                return $(self.div).fadeOut(500);
             }, timeout);
         };
     };
