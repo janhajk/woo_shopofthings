@@ -394,6 +394,8 @@
                 }
                 tr.appendChild(th);
             }
+            tr.style.position = 'sticky';
+            tr.style.top = document.getElementById('dashline').height;
             thead.appendChild(tr);
             t.appendChild(thead);
 
