@@ -220,30 +220,39 @@
     };
 
     var EditFrm = function() {
+        var self = this;
+        
         this.key = null;
         this.value = null;
         this.id = null;
         this.item = null;
-        var self = this;
+        
         var div = document.createElement('div');
         var form = document.createElement('form');
         form.action = "/login";
         form.method = "POST";
+        
         var value = document.createElement('input');
         value.type = "text";
         this.valueDom = value;
+        
         var submit = document.createElement('button');
         submit.type = "button";
         submit.innerHTML = "save";
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
             editKeyValueById(self.id, self.key, value.value, function() {
-                self.item[self.key] = self.value;
+                self.item[self.key] = value.value;
                 self.item.update();
+                this.key = null;
+                this.value = null;
+                this.id = null;
+                this.item = null;
                 self.hide();
                 bAlert.show('value saved!', 'success');
             });
         });
+        
         var cancel = document.createElement('button');
         cancel.type = "button";
         cancel.innerHTML = "cancel";
@@ -255,6 +264,7 @@
             this.item = null;
             self.hide();
         });
+        
         form.appendChild(value);
         form.appendChild(submit);
         form.appendChild(cancel);
