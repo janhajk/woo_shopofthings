@@ -33,7 +33,6 @@
             col: 'sku',
             ondblclick: function(item) {
                 return function() {
-                    frmEdit.id = item.id;
                     frmEdit.key = 'sku';
                     frmEdit.valueDom.value = item.sku;
                     frmEdit.item = item;
@@ -60,7 +59,6 @@
             round: 2,
             ondblclick: function(item) {
                 return function() {
-                    frmEdit.id = item.id;
                     frmEdit.key = 'warehouse_cost';
                     frmEdit.valueDom.value = item.warehouse_cost;
                     frmEdit.item = item;
@@ -77,19 +75,51 @@
         },
         'Qty': {
             col: 'stock_quantity',
-            round: 0
+            round: 0,
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.key = 'stock_quantity';
+                    frmEdit.valueDom.value = item.stock_quantity;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            }
         },
         'Qty 1': {
             col: 'warehouse_min_warning',
-            round: 0
+            round: 0,
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.key = 'warehouse_min_warning';
+                    frmEdit.valueDom.value = item.warehouse_min_warning;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            }
         },
         'Qty 2': {
             col: 'warehouse_min_alert',
-            round: 0
+            round: 0,
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.key = 'warehouse_min_alert';
+                    frmEdit.valueDom.value = item.warehouse_min_alert;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            }
         },
         'ordered': {
             col: 'warehouse_ordered',
-            round: 0
+            round: 0,
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.key = 'warehouse_ordered';
+                    frmEdit.valueDom.value = item.warehouse_ordered;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            }
         },
         'Categories': {
             formula: function(cell, item, cb) {
@@ -276,7 +306,7 @@
         submit.innerHTML = "save";
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
-            editKeyValueById(self.id, self.key, value.value, function() {
+            editKeyValueById(self.item.id, self.key, value.value, function() {
                 self.item[self.key] = value.value;
                 self.item.update();
                 this.key = null;

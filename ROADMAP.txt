@@ -5,8 +5,9 @@
 + In Place edit of product properties
 + Load all products (> 100)
 + Display additional properties
-+ Edit aditional properties
-- Jump to Input field after edit; save with <enter>
++ Edit single aditional properties
++ Jump to Input field after edit; save with <enter>
+- edit all aditional properties
 - Handle Variations
 - show stock with colored bar as Bootstrap "Stacked Progress Bars"
 - Quick edit categories
