@@ -445,6 +445,7 @@
                 var input, table, tr, i;
                 input = this.value.toLowerCase().split(' ');
                 input = input.filter(e => e !== ''); // Rmove Empty strings
+                if (!input.length) { return; }
                 table = tbody;
                 tr = table.rows;
                 for (i = 0; i < tr.length; i++) { // all rows
@@ -717,6 +718,15 @@
     //
     //
 
+
+
+    /**
+     * Searches table-tr for array of words
+     * 
+     * @param DOM tr <tr>-DOM Element to search
+     * @param array aInput Array with search-Strings
+     * 
+     */
     var searchTr = function(tr, aInput) {
         let td = tr.cells;
         let counter = 0;
