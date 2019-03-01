@@ -442,24 +442,37 @@
             iSearch.placeholder = 'Search..';
             iSearch.style.marginBottom = '10px';
             iSearch.onkeyup = function() {
-                var input, filter, table, tr, td, i, txtValue;
+                var input, table, tr, td, i, txtValue
                 input = this.value.toLowerCase().split(' ');
-                filter = input[0].toUpperCase();
                 table = tbody;
                 tr = table.rows;
-                for (i = 0; i < tr.length; i++) {
+                for (i = 0; i < tr.length; i++) { // all rows
                     td = tr[i].cells;
-                    for (let s = 0; s < td.length; s++) {
+                    let counter = 0;
+                    let words = input;
+                    for (let s = 0; s < td.length; s++) { // all cells/cols
                         if (td[s]) {
                             txtValue = td[s].textContent || td[s].innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                                break;
-                            }
-                            else {
-                                tr[i].style.display = "none";
+                            for (let s in words) {
+                                if (txtValue.toUpperCase().indexOf(words[s].toUpperCase()) > -1) {
+                                    // Remove found word from words list, so it doesn't get count more than once
+                                    words = words.filter(e => e !== words[s]);
+                                    counter++;
+                                    if (counter === input.length) {
+                                        tr[i].style.display = "";
+                                        break;
+                                    }
+                                }
                             }
                         }
+                        if (counter === input.length) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                    // Not all words found then hide row
+                    if (counter !== input.length) {
+                        tr[i].style.display = "none";
                     }
                 }
             };
