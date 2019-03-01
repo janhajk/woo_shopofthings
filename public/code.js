@@ -444,6 +444,7 @@
             iSearch.onkeyup = function() {
                 var input, table, tr, td, i, txtValue
                 input = this.value.toLowerCase().split(' ');
+                input = input.filter(e => e !== ''); // Rmove Empty strings
                 table = tbody;
                 tr = table.rows;
                 for (i = 0; i < tr.length; i++) { // all rows
