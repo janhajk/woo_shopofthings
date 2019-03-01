@@ -442,38 +442,16 @@
             iSearch.placeholder = 'Search..';
             iSearch.style.marginBottom = '10px';
             iSearch.onkeyup = function() {
-                var input, table, tr, td, i, txtValue
+                var input, table, tr, i;
                 input = this.value.toLowerCase().split(' ');
                 input = input.filter(e => e !== ''); // Rmove Empty strings
                 table = tbody;
                 tr = table.rows;
                 for (i = 0; i < tr.length; i++) { // all rows
-                    td = tr[i].cells;
-                    let counter = 0;
-                    let words = input;
-                    for (let s = 0; s < td.length; s++) { // all cells/cols
-                        if (td[s]) {
-                            txtValue = td[s].textContent || td[s].innerText;
-                            for (let s = 0; s < words.length; s++) {
-                                if (txtValue.toUpperCase().indexOf(words[s].toUpperCase()) > -1) {
-                                    // Remove found word from words list, so it doesn't get count more than once
-                                    words = words.filter(e => e !== words[s]);
-                                    counter++;
-                                    s--;
-                                    if (counter === input.length) {
-                                        tr[i].style.display = "";
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        if (counter === input.length) {
-                            tr[i].style.display = "";
-                            break;
-                        }
+                    if (searchTr(tr[i], input)) {
+                        tr[i].style.display = "";
                     }
-                    // Not all words found then hide row
-                    if (counter !== input.length) {
+                    else {
                         tr[i].style.display = "none";
                     }
                 }
@@ -738,6 +716,29 @@
     //
     //
     //
+
+    var searchTr = function(tr, aInput) {
+        let td = tr.cells;
+        let counter = 0;
+        let words = aInput;
+        for (let i = 0; i < td.length; i++) { // all cells/cols
+            if (td[i]) {
+                let txtValue = td[i].textContent || td[i].innerText;
+                for (let s = 0; s < words.length; s++) {
+                    if (txtValue.toUpperCase().indexOf(words[s].toUpperCase()) > -1) {
+                        // Remove found word from words list, so it doesn't get count more than once
+                        words = words.filter(e => e !== words[s]);
+                        counter++;
+                        s--;
+                        if (counter === aInput.length) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    };
 
 
     /**
