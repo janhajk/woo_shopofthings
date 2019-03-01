@@ -453,12 +453,11 @@
                     for (let s = 0; s < td.length; s++) { // all cells/cols
                         if (td[s]) {
                             txtValue = td[s].textContent || td[s].innerText;
-                            for (let s in words) {
+                            for (let s = 0; s < words.length; s++) {
                                 if (txtValue.toUpperCase().indexOf(words[s].toUpperCase()) > -1) {
                                     // Remove found word from words list, so it doesn't get count more than once
                                     words = words.filter(e => e !== words[s]);
                                     counter++;
-                                    s--;
                                     if (counter === input.length) {
                                         tr[i].style.display = "";
                                         break;
