@@ -150,6 +150,9 @@
 
     document.addEventListener('DOMContentLoaded', function() {
 
+        test = new BModal("test", document.getElementsByTagName('BODY')[0]);
+        $(test).modal(true, true);
+
         frmLogin = new Login();
         frmEdit = new EditFrm();
         bAlert = new BAlert();
@@ -794,7 +797,7 @@
         content.appendChild(footer);
         dialog.appendChild(content);
         modal.appendChild(dialog);
-        
+
         parent.appendChild(modal);
 
         // save modal tree
@@ -802,8 +805,7 @@
         this.content = body;
         this.title = h4.innerHTML;
     };
-    test = new BModal("test", document.getElementsByTagName('BODY')[0]);
-    $(test).modal(true,true);
+
 
 
     /**
