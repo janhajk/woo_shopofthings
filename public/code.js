@@ -455,7 +455,7 @@
                     }
                     return;
                 }
-                
+
                 table = tbody;
                 tr = table.rows;
                 for (i = 0; i < tr.length; i++) { // all rows
@@ -728,6 +728,82 @@
     //
     //
 
+
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
+    var BModal = function(title, parent) {
+        var modal = document.createElement('div');
+        modal.className = 'modal';
+        // modal.role = 'dialog';
+
+        // Dialog
+        var dialog = document.createElement('div');
+        dialog.className = 'modal-dialog';
+        // dialog.style.width = '100%';
+        //dialog.style.height = '80%';
+        //dialog.style.margin = '0';
+        //dialog.style.padding = '0';
+
+        // Content Area
+        var content = document.createElement('div');
+        content.className = 'modal-content';
+        //content.style.height = 'auto';
+        //content.style.minHeight = '100%';
+        //content.style.borderRadius = '0';
+
+        // Header
+        var header = document.createElement('div');
+        header.className = 'modal-header';
+        var h4 = document.createElement('h4');
+        h4.className = 'modal-title';
+        h4.innerHTML = title;
+        var dismiss = document.createElement('button');
+        dismiss.type = 'button';
+        dismiss.className = 'close';
+        dismiss.dataDismiss = 'modal';
+        dismiss.innerHTML = '&times;';
+        header.appendChild(h4);
+        header.appendChild(dismiss);
+
+        // Body
+        var body = document.createElement('div');
+        body.className = 'modal-body';
+
+        // Footer
+        var footer = document.createElement('div');
+        footer.className = 'modal-footer';
+        var dismissBottom = document.createElement('button');
+        dismissBottom.className = 'btn btn-danger';
+        dismissBottom.type = 'button';
+        dismissBottom.dataDismiss = 'modal';
+        dismissBottom.innerHTML = 'Close';
+        var btnSave = document.createElement('button');
+        btnSave.type = 'button';
+        btnSave.onclick = function() {};
+        footer.appendChild(btnSave);
+        footer.appendChild(dismissBottom);
+
+        // Throw everything together
+        content.appendChild(header);
+        content.appendChild(body);
+        content.appendChild(footer);
+        dialog.appendChild(content);
+        modal.appendChild(dialog);
+        
+        parent.appendChild(modal);
+
+        // save modal tree
+        this.dom = modal;
+        this.content = body;
+        this.title = h4.innerHTML;
+    };
+    test = new BModal("test", document.getElementsByTagName('BODY')[0]);
+    $(test).modal(true,true);
 
 
     /**

@@ -16,3 +16,5 @@
 - show orders
 - print label "Adressetikette"
 - show Revenue and Profit (Profit from Cost)
+- show Total Warenwert and Total Verkaufswarenwert
+- Filterbuttons for: Qty Alert, Qty Warning, On Order ("ordered > 0)
