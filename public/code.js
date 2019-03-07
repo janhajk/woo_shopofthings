@@ -151,7 +151,7 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         var test = new BModal("test", document.getElementById('dashline'));
-        $(test).modal(true, true);
+        $(test.dom).modal(true, true);
 
         frmLogin = new Login();
         frmEdit = new EditFrm();
