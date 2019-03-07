@@ -444,13 +444,23 @@
             iSearch.onkeyup = function() {
                 var input, table, tr, i;
                 input = this.value.toLowerCase().split(' ');
-                input = input.filter(e => e !== ''); // Rmove Empty strings
-                if (!input.length) { return; }
+                input = input.filter(e => e !== ''); // Remove Empty strings
+
+                // if No Search string given, show all rows
+                if (!input.length) {
+                    let table = tbody;
+                    let tr = table.rows;
+                    for (i = 0; i < tr.length; i++) { // all rows
+                        tr[i].style.display = "table-row";
+                    }
+                    return;
+                }
+                
                 table = tbody;
                 tr = table.rows;
                 for (i = 0; i < tr.length; i++) { // all rows
                     if (searchTr(tr[i], input)) {
-                        tr[i].style.display = "";
+                        tr[i].style.display = "table-row";
                     }
                     else {
                         tr[i].style.display = "none";
@@ -728,12 +738,12 @@
      * 
      */
     var searchTr = function(tr, aInput) {
-        let td = tr.cells;
+        let tds = tr.cells;
         let counter = 0;
         let words = aInput;
-        for (let i = 0; i < td.length; i++) { // all cells/cols
-            if (td[i]) {
-                let txtValue = td[i].textContent || td[i].innerText;
+        for (let i = 0; i < tds.length; i++) { // all cells/cols
+            if (tds[i]) {
+                let txtValue = tds[i].textContent || tds[i].innerText;
                 for (let s = 0; s < words.length; s++) {
                     if (txtValue.toUpperCase().indexOf(words[s].toUpperCase()) > -1) {
                         // Remove found word from words list, so it doesn't get count more than once
