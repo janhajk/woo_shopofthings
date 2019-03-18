@@ -24,6 +24,13 @@ var basic = function(app, connection) {
         });
     });
     
+    app.get('/products_public', function(req, res) {
+        const woo = require(__dirname + '/lib/woo.js');
+        woo.products_public(connection, function(e, data) {
+            res.send(e ? e : data);
+        });
+    });
+    
     app.get('/products/label/:sku/:link', auth.ensureAuthenticated, function(req, res) {
         const label = require(__dirname + '/lib/label.js');
         const sku = req.params.sku;
