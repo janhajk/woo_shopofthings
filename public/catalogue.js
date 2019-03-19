@@ -27,7 +27,7 @@
         },
         'Title': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.name + '</a>';
+                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.title + '</a>';
                 cb();
             }
         },
@@ -39,7 +39,7 @@
             round: 2
         },
         'Shipping': {
-            col: 'shipping_class'
+            col: 'shipping'
         },
         'Kategorien': {
             formula: function(cell, item, cb) {
