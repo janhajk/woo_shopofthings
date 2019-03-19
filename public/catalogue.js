@@ -19,13 +19,13 @@
     var cols = {
         'image': {
             formula: function(cell, item, cb) {
-                let src = (item.images.length) ? item.images[0].src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
-                cell.value = '<img src="' + src + '" height="50" />'
+                let src = (item.image) ? item.image.src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
+                cell.value = '<img src="' + src + '" style="height:50px" />';
+                cell.align = 'center';
                 cb();
             }
         },
         'Title': {
-            col: 'name',
             formula: function(cell, item, cb) {
                 cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.name + '</a>';
                 cb();
@@ -69,7 +69,7 @@
          * 
          */
         var request = new XMLHttpRequest();
-        request.open('GET', '/products', true);
+        request.open('GET', 'https://admin.shopofthings.ch/products_public', true);
         request.onload = function() {
             if (request.status >= 200 && request.status < 405) {
                 try {
@@ -152,7 +152,7 @@
                 }
                 tr.appendChild(th);
             }
-            tr.style.position = 'sticky';
+            //tr.style.position = 'sticky';
             tr.style.top = '50px';
             tr.style.background = 'white';
             thead.appendChild(tr);
@@ -198,6 +198,7 @@
             // Table Wrapper
             var div = document.createElement('div');
             div.style.width = '100%';
+            div.align = 'center';
             //div.className = 'table-responsive';
             div.appendChild(iSearch);
             div.appendChild(t);
