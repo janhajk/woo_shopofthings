@@ -1,8 +1,8 @@
 /*global $ */
+/*global catalogueRunOnce */
 (function() {
 
     var products;
-
     /////////////////////////////////////////
     // Main Table
     // Table Columns / Structure
@@ -27,7 +27,7 @@
         },
         'Title': {
             formula: function(cell, item, cb) {
-                cell.value = '<a href="' + item.permalink + '" target="_blank">' + item.title + '</a>';
+                cell.value = '<a href="' + item.permalink + '" target="_blank" style="text-decoration:underline">' + item.title + '</a>';
                 cb();
             }
         },
@@ -57,46 +57,59 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         var content = document.getElementById('content');
+        if (typeof catalogueRunOnce === 'undefined') {
+            
+            var divSpinner = document.createElement('img');
+            divSpinner.src = 'https://shopofthings.ch/wp-content/uploads/2019/03/Matrix-3.8s-200x200px.gif';
+            divSpinner.style.margin = '0 auto';
+            var divSpinnerContainer = document.createElement('div');
+            divSpinnerContainer.style.width = '100%';
+            divSpinnerContainer.appendChild(divSpinner);
+            content.appendChild(divSpinnerContainer);
+            
+            // Init positions collection
+            products = new Products(content);
+            /**
+             * 
+             * Load initial Data
+             * 
+             * This function only gets called once
+             * 
+             * 
+             */
 
-        // Init positions collection
-        products = new Products(content);
-        /**
-         * 
-         * Load initial Data
-         * 
-         * This function only gets called once
-         * 
-         * 
-         */
-        var request = new XMLHttpRequest();
-        request.open('GET', 'https://admin.shopofthings.ch/products_public', true);
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 405) {
-                try {
-                    var data = JSON.parse(request.responseText);
-                    for (let i in data) {
-                        let product = new Product(data[i]);
-                        product.load();
+            catalogueRunOnce = true;
+            var request = new XMLHttpRequest();
+            request.open('GET', 'https://admin.shopofthings.ch/products_public', true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 405) {
+                    try {
+                        var data = JSON.parse(request.responseText);
+                        for (let i in data) {
+                            let product = new Product(data[i]);
+                            product.load();
 
-                        // Add product to collection
-                        products.add(product);
+                            // Add product to collection
+                            products.add(product);
+                        }
+                        products.tableRender();
+                        content.removeChild(divSpinnerContainer);
                     }
-                    products.tableRender();
+                    catch (e) {
+                        console.log(e);
+                        console.log(new Date().toLocaleString() + ': not logged in');
+                        document.getElementById('content').innerHTML = 'Fehler beim Laden';
+                    }
                 }
-                catch (e) {
-                    console.log(e);
-                    console.log(new Date().toLocaleString() + ': not logged in');
-                    document.getElementById('content').innerHTML = 'Fehler beim Laden';
+                else {
+                    // Error
                 }
-            }
-            else {
-                // Error
-            }
-        };
-        request.onerror = function() {
-            console.log('There was an error in xmlHttpRequest!');
-        };
-        request.send();
+            };
+            request.onerror = function() {
+                console.log('There was an error in xmlHttpRequest!');
+            };
+            request.send();
+        }
     });
 
 

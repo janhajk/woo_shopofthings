@@ -7,9 +7,13 @@
 + Display additional properties
 + Edit single aditional properties
 + Jump to Input field after edit; save with <enter>
+
+
+
+
+- Handle Variations
 - cell background with min/max values > min = red;
 - edit all aditional properties
-- Handle Variations
 - show stock with colored bar as Bootstrap "Stacked Progress Bars"
 - Quick edit categories
 
