@@ -193,9 +193,14 @@
                     for (let i in data) {
                         let product = new Product(data[i]);
                         product.load();
-
                         // Add product to collection
                         products.add(product);
+                        for (let s in data[i].variations) {
+                            let product = new Product(data[i].variations[s]);
+                            product.load();
+                            // Add product to collection
+                            products.add(product);
+                        }
                     }
                     products.tableRender();
                 }
