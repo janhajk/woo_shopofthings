@@ -418,7 +418,7 @@
                         if (info[s].type === 'sum') {
                             let val = tr[i].cells[info[s].col].dataValue;
                             if (!isNaN(val)) {
-                                info[s].value += tr[i].cells[info[s].col].dataValue;
+                                info[s].value += val;
                             }
                         }
                     }
