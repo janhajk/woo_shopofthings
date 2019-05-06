@@ -431,7 +431,7 @@
                 }
             }
             for (let i = 0; i < this.info.length; i++) {
-                this.info[i].cellValue.innerHTML = 'CHF' + (this.info[i].value).toLocaleString('de-CH-1996', { minimumFractionDigits: smartRound(this.info[i].value)});;
+                this.info[i].cellValue.innerHTML = 'CHF' + (this.info[i].value).toLocaleString('de-CH-1996', { minimumFractionDigits: 0});;
             }
         };
     };
