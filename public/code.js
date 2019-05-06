@@ -30,7 +30,7 @@
         'Title': {
             col: 'name',
             formula: function(cell, item, cb) {
-                cell.value = (item.name !== undefined) ? item.name : item.attributes[0].option;
+                cell.value = (item.name != undefined) ? item.name : item.attributes[0].option;
                 cb();
             },
             ondblclick: function(item) {
