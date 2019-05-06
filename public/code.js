@@ -21,7 +21,7 @@
     var cols = {
         'image': {
             formula: function(cell, item, cb) {
-                let src = (item.images.length) ? item.images[0].src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
+                let src = (item.images != undefined && item.images.length) ? item.images[0].src : item.image != undefined ? item.image.src: 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
                 cell.value = '<img src="' + src + '" height="50" />'
                 cb();
             }
@@ -195,6 +195,8 @@
                         product.load();
                         // Add product to collection
                         products.add(product);
+                        
+                        // Load variations
                         for (let s in data[i].variations) {
                             let product = new Product(data[i].variations[s]);
                             product.load();
