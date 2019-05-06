@@ -470,7 +470,7 @@
 
         this.tableBody = null;
 
-        // Renders a Position table
+        // Renders a Product table
         this.tableRender = function() {
             var table = this.table();
             this.tableBody = table;
@@ -478,6 +478,7 @@
             for (let i = 0; i < items.length; i++) {
                 items[i].domRow(table[1].tBodies[0]);
                 items[i].update();
+                infoBlock.update();
             }
             //$.bootstrapSortable({ applyLast: true });
         };
@@ -546,6 +547,7 @@
                         tr[i].style.display = "none";
                     }
                 }
+                infoBlock.update();
             };
 
             // Table Wrapper
