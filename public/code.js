@@ -416,7 +416,10 @@
                 if (tr[i].style.display !== 'none') {
                     for (let s in info) {
                         if (info[s].type === 'sum') {
-                            info[s].value += tr[i].cells[info[s].col].dataValue;
+                            let val = tr[i].cells[info[s].col].dataValue;
+                            if (!isNaN(val)) {
+                                info[s].value += tr[i].cells[info[s].col].dataValue;
+                            }
                         }
                     }
                 }
