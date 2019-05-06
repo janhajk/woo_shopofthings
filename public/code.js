@@ -425,7 +425,7 @@
                 }
             }
             for (let i = 0; i<this.info.length;i++) {
-                this.info[i].cellValue = this.info[i].value;
+                this.info[i].cellValue.innerHTML = this.info[i].value;
             }
         };
     };
