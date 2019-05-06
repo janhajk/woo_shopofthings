@@ -4,6 +4,7 @@
     var products;
     var frmLogin;
     var frmEdit;
+    var infoBlock;
     var bAlert;
     /////////////////////////////////////////
     // Main Table
@@ -21,7 +22,7 @@
     var cols = {
         'image': {
             formula: function(cell, item, cb) {
-                let src = (item.images != undefined && item.images.length) ? item.images[0].src : item.image != undefined ? item.image.src: 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
+                let src = (item.images != undefined && item.images.length) ? item.images[0].src : item.image != undefined ? item.image.src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
                 cell.value = '<img src="' + src + '" height="50" />'
                 cb();
             }
@@ -168,6 +169,7 @@
 
         frmLogin = new Login();
         frmEdit = new EditFrm();
+        infoBlock = new InfoBlock();
         bAlert = new BAlert();
         var content = document.getElementById('content');
 
@@ -195,7 +197,7 @@
                         product.load();
                         // Add product to collection
                         products.add(product);
-                        
+
                         // Load variations
                         for (let s in data[i].variations) {
                             let product = new Product(data[i].variations[s], data[i].id);
@@ -374,13 +376,54 @@
             this.div.style.display = 'none';
         };
     };
-    
+
+
     var InfoBlock = function() {
+        let info = [
+            { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0 },
+            { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0 },
+        ];
         let div = document.createElement('div');
-        
+        div.display = 'table';
+        div.style.width = 'auto';
+
+        for (let i = 0; i < info.length; i++) {
+            let tr = document.createElement('div');
+            tr.style.display = 'table-row';
+            let td1 = document.createElement('div');
+            td1.style.display = 'table-cell';
+            td1.innerHTML = info[i].label;
+            let td2 = document.createElement('div');
+            td2.style.display = 'table-cell';
+            td2.innerHTML = info[i].value;
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            div.appendChild(tr);
+            info[i].cellValue = td2;
+            info[i].cellLabel = td1;
+        }
+
         document.getElementById('dashline').appendChild(div);
+
+        this.update = function() {
+            // Reset values
+            for (let s in info) {
+                info[s].value = 0;
+            }
+            let table = products.tableBody[1].tBodies[0];
+            let tr = table.rows;
+            for (let i = 0; i < tr.length; i++) { // all rows
+                if (tr[i].style.display !== 'none') {
+                    for (let s in info) {
+                        if (info[s].type === 'sum') {
+                            info[s].value += tr.cols[info[s].col].innerHTML;
+                        }
+                    }
+                }
+            }
+        };
     };
-    
+
 
     var BAlert = function() {
         var div = document.createElement('div');
@@ -425,9 +468,12 @@
             items.push(product);
         };
 
+        this.tableBody = null;
+
         // Renders a Position table
         this.tableRender = function() {
             var table = this.table();
+            this.tableBody = table;
             this.parent.appendChild(table[0]);
             for (let i = 0; i < items.length; i++) {
                 items[i].domRow(table[1].tBodies[0]);
@@ -529,9 +575,9 @@
      *
      */
     var Product = function(data, parent) {
-        
+
         this.parent = (typeof parent !== 'undefined') ? parent : 0;
-        
+
         var self = this;
 
         // Store all data in object
@@ -574,10 +620,10 @@
                 }
             }
             let tr = document.createElement('tr');
-            
+
             // Variation with different Background color
-            tr.style.backgroundColor = (this.parent)?'#f9f9c5':'#FFF';
-            
+            tr.style.backgroundColor = (this.parent) ? '#f9f9c5' : '#FFF';
+
             for (let i in cells) {
                 tr.appendChild(cells[i]);
             }
