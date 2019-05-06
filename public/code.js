@@ -416,7 +416,7 @@
                 if (tr[i].style.display !== 'none') {
                     for (let s in info) {
                         if (info[s].type === 'sum') {
-                            info[s].value += tr[i].cells[info[s].col].innerHTML;
+                            info[s].value += tr[i].cells[info[s].col].dataValue;
                         }
                     }
                 }
@@ -712,6 +712,7 @@
             // Text-Cells
             else {
                 td.innerHTML = this.tValue();
+                td.dataValue = this.value;
             }
             td.style.textAlign = this.align;
             td.style.cursor = 'pointer';
