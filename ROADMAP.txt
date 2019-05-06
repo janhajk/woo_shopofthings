@@ -8,9 +8,7 @@
 + Edit single aditional properties
 + Jump to Input field after edit; save with <enter>
 + Handle Variations
-
-
-- show Total Warenwert and Total Verkaufswarenwert
++ show Total Warenwert and Total Verkaufswarenwert
 
 
 - cell background with min/max values > min = red;

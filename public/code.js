@@ -546,6 +546,7 @@
                     for (i = 0; i < tr.length; i++) { // all rows
                         tr[i].style.display = "table-row";
                     }
+                    infoBlock.update();
                     return;
                 }
 
