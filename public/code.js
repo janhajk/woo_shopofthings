@@ -380,8 +380,8 @@
 
     var InfoBlock = function() {
         this.info = [
-            { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0 },
-            { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0 },
+            { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0, factor: 7 },
+            { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0, factor: 7 },
         ];
         let div = document.createElement('div');
         div.display = 'table';
@@ -417,15 +417,16 @@
                     for (let s in this.info) {
                         if (this.info[s].type === 'sum') {
                             let val = tr[i].cells[this.info[s].col].innerHTML;
+                            let factor = tr[i].cells[this.info[s].factor].innerHTML;
                             if (!isNaN(val)) {
-                                this.info[s].value += Number(val);
+                                this.info[s].value += Number(val) * Number(factor);
                             }
                         }
                     }
                 }
             }
-            for (let i = 0; i<this.info.length;i++) {
-                this.info[i].cellValue.innerHTML = this.info[i].value;
+            for (let i = 0; i < this.info.length; i++) {
+                this.info[i].cellValue.innerHTML = 'CHF' + smartRound(this.info[i].value);
             }
         };
     };
