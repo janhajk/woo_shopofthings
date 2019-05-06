@@ -198,7 +198,7 @@
                         
                         // Load variations
                         for (let s in data[i].variations) {
-                            let product = new Product(data[i].variations[s]);
+                            let product = new Product(data[i].variations[s], data[i].id);
                             product.load();
                             // Add product to collection
                             products.add(product);
@@ -224,10 +224,17 @@
     });
 
 
-    var editKeyValueById = function(id, key, value, cb) {
-        var params = [id, key, window.btoa(value)];
+    var editKeyValueById = function(item, key, value, cb) {
+        var params = [item.id, key, window.btoa(value)];
+        let path = '/products/';
+        if (item.parent) {
+            path += item.parent + '/variations/' + params.join('/');
+        }
+        else {
+            path += params.join('/');
+        }
         var request = new XMLHttpRequest();
-        request.open('GET', '/products/' + params.join('/'), true);
+        request.open('GET', path, true);
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
                 try {
@@ -329,7 +336,7 @@
         submit.innerHTML = "save";
         submit.className = 'btn-success';
         submit.addEventListener('click', function() {
-            editKeyValueById(self.item.id, self.key, value.value, function() {
+            editKeyValueById(self.item, self.key, value.value, function() {
                 self.item[self.key] = value.value;
                 self.item.update();
                 this.key = null;
@@ -517,7 +524,10 @@
      * @param {Object} data Product-data from Database JSON
      *
      */
-    var Product = function(data) {
+    var Product = function(data, parent) {
+        
+        this.parent = (typeof parent !== 'undefined') ? parent : 0;
+        
         var self = this;
 
         // Store all data in object
