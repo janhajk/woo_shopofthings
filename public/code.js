@@ -570,6 +570,10 @@
                 }
             }
             let tr = document.createElement('tr');
+            
+            // Variation with different Background color
+            tr.style.backgroundColor = (this.parent)?'#f9f9c5':'#FFF';
+            
             for (let i in cells) {
                 tr.appendChild(cells[i]);
             }
