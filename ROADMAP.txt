@@ -10,6 +10,8 @@
 + Handle Variations
 + show Total Warenwert and Total Verkaufswarenwert
 
+- Show name of variations
+- Filterbuttons for: Qty Alert, Qty Warning, On Order ("ordered > 0)
 
 - cell background with min/max values > min = red;
 - edit all aditional properties
@@ -20,4 +22,3 @@
 - print label "Adressetikette"
 - show Revenue and Profit (Profit from Cost)
 
-- Filterbuttons for: Qty Alert, Qty Warning, On Order ("ordered > 0)
