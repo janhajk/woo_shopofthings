@@ -369,11 +369,13 @@
 
         this.show = function() {
             this.div.style.display = 'block';
+            infoBlock.div.style.marginTop = '-30px';
             this.valueDom.focus();
             this.valueDom.select();
         };
         this.hide = function() {
             this.div.style.display = 'none';
+            infoBlock.div.style.marginTop = '';
         };
     };
 
@@ -384,15 +386,16 @@
             { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0, factor: 7 },
         ];
         let div = document.createElement('div');
-        div.display = 'table';
+        div.style.display = 'table';
         div.style.width = 'auto';
+        div.style.float = 'right';
 
         for (let i = 0; i < this.info.length; i++) {
             let tr = document.createElement('div');
             tr.style.display = 'table-row';
             let td1 = document.createElement('div');
             td1.style.display = 'table-cell';
-            td1.innerHTML = this.info[i].label;
+            td1.innerHTML = this.info[i].label + ': ';
             let td2 = document.createElement('div');
             td2.style.display = 'table-cell';
             td2.innerHTML = this.info[i].value;
@@ -402,6 +405,8 @@
             this.info[i].cellValue = td2;
             this.info[i].cellLabel = td1;
         }
+        
+        this.div = div;
 
         document.getElementById('dashline').appendChild(div);
 
