@@ -418,7 +418,7 @@
                         if (this.info[s].type === 'sum') {
                             let val = tr[i].cells[this.info[s].col].innerHTML;
                             if (!isNaN(val)) {
-                                this.info[s].value += val;
+                                this.info[s].value += Number(val);
                             }
                         }
                     }
