@@ -379,7 +379,7 @@
 
 
     var InfoBlock = function() {
-        let info = [
+        this.info = [
             { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0 },
             { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0 },
         ];
@@ -387,42 +387,45 @@
         div.display = 'table';
         div.style.width = 'auto';
 
-        for (let i = 0; i < info.length; i++) {
+        for (let i = 0; i < this.info.length; i++) {
             let tr = document.createElement('div');
             tr.style.display = 'table-row';
             let td1 = document.createElement('div');
             td1.style.display = 'table-cell';
-            td1.innerHTML = info[i].label;
+            td1.innerHTML = this.info[i].label;
             let td2 = document.createElement('div');
             td2.style.display = 'table-cell';
-            td2.innerHTML = info[i].value;
+            td2.innerHTML = this.info[i].value;
             tr.appendChild(td1);
             tr.appendChild(td2);
             div.appendChild(tr);
-            info[i].cellValue = td2;
-            info[i].cellLabel = td1;
+            this.info[i].cellValue = td2;
+            this.info[i].cellLabel = td1;
         }
 
         document.getElementById('dashline').appendChild(div);
 
         this.update = function() {
             // Reset values
-            for (let s in info) {
-                info[s].value = 0;
+            for (let s in this.info) {
+                this.info[s].value = 0;
             }
             let table = products.tableBody[1].tBodies[0];
             let tr = table.rows;
             for (let i = 0; i < tr.length; i++) { // all rows
                 if (tr[i].style.display !== 'none') {
-                    for (let s in info) {
-                        if (info[s].type === 'sum') {
-                            let val = tr[i].cells[info[s].col].dataValue;
+                    for (let s in this.info) {
+                        if (this.info[s].type === 'sum') {
+                            let val = tr[i].cells[this.info[s].col].innerHTML;
                             if (!isNaN(val)) {
-                                info[s].value += val;
+                                this.info[s].value += val;
                             }
                         }
                     }
                 }
+            }
+            for (let i = 0; i<this.info.length;i++) {
+                this.info[i].cellValue = this.info[i].value;
             }
         };
     };
