@@ -46,6 +46,18 @@ var basic = function(app, connection) {
             //res.send(e ? e : data);
         });
     });
+
+    app.get('/products/:id/variations/:id2/:key/:value', auth.ensureAuthenticated, function(req, res) {
+        const woo = require(__dirname + '/lib/woo.js');
+        const id = req.params.id;
+        const id2 = req.params.id2;
+        const key = req.params.key;
+        const value = req.params.value;
+        woo.editVariation(id, id2, key, value, connection, function(e, data) {
+            res.send(data);
+            //res.send(e ? e : data);
+        });
+    });
     
     app.get('/products/:id/:key/:value', auth.ensureAuthenticated, function(req, res) {
         const woo = require(__dirname + '/lib/woo.js');
