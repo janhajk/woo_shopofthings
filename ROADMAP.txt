@@ -7,11 +7,12 @@
 + Display additional properties
 + Edit single aditional properties
 + Jump to Input field after edit; save with <enter>
++ Handle Variations
 
 
+- show Total Warenwert and Total Verkaufswarenwert
 
 
-- Handle Variations
 - cell background with min/max values > min = red;
 - edit all aditional properties
 - show stock with colored bar as Bootstrap "Stacked Progress Bars"
@@ -20,5 +21,5 @@
 - show orders
 - print label "Adressetikette"
 - show Revenue and Profit (Profit from Cost)
-- show Total Warenwert and Total Verkaufswarenwert
+
 - Filterbuttons for: Qty Alert, Qty Warning, On Order ("ordered > 0)

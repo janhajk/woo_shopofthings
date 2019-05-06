@@ -290,6 +290,7 @@
         div.appendChild(form);
         document.getElementById('dashline').appendChild(div);
         this.div = div;
+        this.form = form;
         div.style.display = 'none';
 
         this.show = function() {
@@ -309,9 +310,6 @@
         this.item = null;
 
         var div = document.createElement('div');
-        var form = document.createElement('form');
-        form.action = "/login";
-        form.method = "POST";
 
         var value = document.createElement('input');
         value.type = "text";
@@ -360,10 +358,9 @@
             self.hide();
         });
 
-        form.appendChild(value);
-        form.appendChild(submit);
-        form.appendChild(cancel);
-        div.appendChild(form);
+        div.appendChild(value);
+        div.appendChild(submit);
+        div.appendChild(cancel);
         document.getElementById('dashline').appendChild(div);
         this.div = div;
         div.style.display = 'none';
@@ -377,6 +374,13 @@
             this.div.style.display = 'none';
         };
     };
+    
+    var InfoBlock = function() {
+        let div = document.createElement('div');
+        
+        document.getElementById('dashline').appendChild(div);
+    };
+    
 
     var BAlert = function() {
         var div = document.createElement('div');
