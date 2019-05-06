@@ -27,7 +27,15 @@
             }
         },
         'Title': {
-            col: 'name'
+            col: 'name',
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.key = 'name';
+                    frmEdit.valueDom.value = item.name;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            }
         },
         'SKU': {
             col: 'sku',
@@ -68,6 +76,14 @@
         },
         'Price': {
             col: 'price',
+            ondblclick: function(item) {
+                return function() {
+                    frmEdit.key = 'price';
+                    frmEdit.valueDom.value = item.price;
+                    frmEdit.item = item;
+                    frmEdit.show();
+                };
+            },
             round: 2
         },
         'Shipping Class': {
