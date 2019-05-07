@@ -23,6 +23,7 @@
       "cloudscraper": "1.4.x",
       "woocommerce": "2.4.x",
       "archiver": "3.x.x",
-      "bitly": "6.x.x"
+      "bitly": "6.x.x",
+      "xmlbuilder": "12.x.x"
    }
 }
