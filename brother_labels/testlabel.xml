@@ -19,7 +19,15 @@
                                     /> </text:ptFontInfo> <text:textControl control="FIXEDFRAME" clipFrame="false" aspectNormal="true" shrink="true" autoLF="false" avoidImage="false" /> <text:textAlign horizontalAlignment="LEFT" verticalAlignment="CENTER"
                                     inLineAlignment="CENTER" /> <text:textStyle vertical="false" nullBlock="false" charSpace="0" lineSpace="0" orgPoint="24pt" combinedChars="false" />
                               <pt:data>Jan Schär Brühlstrasse 8 4415 Lausen</pt:data>
+                              <text:stringItem charLen="9">
+                                    <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
+                                          /> </text:ptFontInfo>
+                              </text:stringItem>
                               <text:stringItem charLen="1">
+                                    <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
+                                          /> </text:ptFontInfo>
+                              </text:stringItem>
+                              <text:stringItem charLen="12">
                                     <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
                                           /> </text:ptFontInfo>
                               </text:stringItem>
@@ -31,19 +39,11 @@
                                     <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
                                           /> </text:ptFontInfo>
                               </text:stringItem>
-                              <text:stringItem charLen="1">
+                              <text:stringItem charLen="4">
                                     <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
                                           /> </text:ptFontInfo>
                               </text:stringItem>
-                              <text:stringItem charLen="1">
-                                    <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
-                                          /> </text:ptFontInfo>
-                              </text:stringItem>
-                              <text:stringItem charLen="1">
-                                    <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
-                                          /> </text:ptFontInfo>
-                              </text:stringItem>
-                              <text:stringItem charLen="1">
+                              <text:stringItem charLen="6">
                                     <text:ptFontInfo> <text:logFont name="Arial" width="0" italic="false" weight="700" charSet="0" pitchAndFamily="34" /> <text:fontExt effect="NOEFFECT" underline="0" strikeout="0" size="10.5pt" orgSize="10.5pt" textColor="#000000" textPrintColorNumber="1"
                                           /> </text:ptFontInfo>
                               </text:stringItem>
