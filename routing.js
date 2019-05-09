@@ -42,7 +42,15 @@ var basic = function(app, connection) {
         const label = require(__dirname + '/lib/label.js');
         const sku = req.params.sku;
         const link = req.params.link;
-        label.send(sku, link, res, function(e, data) {
+        label.product(sku, link, res, function(e, data) {
+            //res.send(e ? e : data);
+        });
+    });
+    
+    app.get('/products/label/adress/:orderId', /*auth.ensureAuthenticated,*/ function(req, res) {
+        const label = require(__dirname + '/lib/label.js');
+        const orderId = req.params.orderId;
+        label.adress(orderId, res, function(e, data) {
             //res.send(e ? e : data);
         });
     });
