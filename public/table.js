@@ -319,20 +319,20 @@
         var value = document.createElement('input');
         value.type = "text";
         this.valueDom = value;
-        // value.addEventListener('keyup', (e) => {
-        //     if (e.key === 'Enter') {
-        //         editKeyValueById(self.id, self.key, value.value, function() {
-        //             self.item[self.key] = value.value;
-        //             self.item.update();
-        //             this.key = null;
-        //             this.value = null;
-        //             this.id = null;
-        //             this.item = null;
-        //             self.hide();
-        //             bAlert.show('value saved!', 'success');
-        //         });
-        //     }
-        // });
+        value.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                editKeyValueById(self.id, self.key, value.value, function() {
+                    self.item[self.key] = value.value;
+                    self.item.update();
+                    this.key = null;
+                    this.value = null;
+                    this.id = null;
+                    this.item = null;
+                    self.hide();
+                    bAlert.show('value saved!', 'success');
+                });
+            }
+        });
 
         var submit = document.createElement('button');
         submit.type = "button";
@@ -408,7 +408,7 @@
             this.info[i].cellValue = td2;
             this.info[i].cellLabel = td1;
         }
-        
+
         this.div = div;
 
         document.getElementById('dashline').appendChild(div);
@@ -434,7 +434,7 @@
                 }
             }
             for (let i = 0; i < this.info.length; i++) {
-                this.info[i].cellValue.innerHTML = 'CHF' + (this.info[i].value).toLocaleString('de-CH-1996', { minimumFractionDigits: 0});;
+                this.info[i].cellValue.innerHTML = 'CHF' + (this.info[i].value).toLocaleString('de-CH-1996', { minimumFractionDigits: 0 });;
             }
         };
     };
