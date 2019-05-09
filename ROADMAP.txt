@@ -10,6 +10,7 @@
 + Handle Variations
 + show Total Warenwert and Total Verkaufswarenwert
 + Show name of variations
++ print label "Adressetikette"
 
 
 - Filterbuttons for: Qty Alert, Qty Warning, On Order (ordered > 0)
@@ -20,6 +21,6 @@
 - Quick edit categories
 
 - show orders
-- print label "Adressetikette"
+
 - show Revenue and Profit (Profit from Cost)
 
