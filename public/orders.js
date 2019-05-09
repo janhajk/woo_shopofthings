@@ -56,7 +56,7 @@
                   for (var i in this.orders) {
                         content.push('<a href="/label/adress/'+this.orders[i].id+'">' + this.orders[i].id + '</a>');
                   }
-                  this.div.innerHTML = content.join('&nbsp;');
+                  this.content.innerHTML = content.join('&nbsp;');
             };
       };
       
