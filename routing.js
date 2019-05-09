@@ -47,7 +47,7 @@ var basic = function(app, connection) {
         });
     });
     
-    app.get('/products/label/adress/:orderId', /*auth.ensureAuthenticated,*/ function(req, res) {
+    app.get('/label/adress/:orderId', /*auth.ensureAuthenticated,*/ function(req, res) {
         const label = require(__dirname + '/lib/label.js');
         const orderId = req.params.orderId;
         label.adress(orderId, res, function(e, data) {
