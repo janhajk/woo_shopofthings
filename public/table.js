@@ -321,7 +321,7 @@
         this.valueDom = value;
         value.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
-                editKeyValueById(self.id, self.key, value.value, function() {
+                editKeyValueById(self.item, self.key, value.value, function() {
                     self.item[self.key] = value.value;
                     self.item.update();
                     this.key = null;
