@@ -14,10 +14,15 @@
       var OrderBlock = function(parent) {
             var self = this;
             let div = document.createElement('div');
-            div.style.display = 'block';
             div.style.width = 'auto';
             div.style.float = 'right';
-            this.content = div;
+            let title = document.createElement('div');
+            title.innerHTML = 'Address Labels for Order No.';
+            let content = document.createElement('div');
+            content.style.margin = '3px';
+            this.content = content;
+            div.appendChild(title);
+            div.appendChild(content);
             parent.appendChild(div);
             this.orders = [];
 
@@ -56,7 +61,7 @@
                   for (var i in this.orders) {
                         content.push('<a href="/label/adress/'+this.orders[i].id+'">' + this.orders[i].id + '</a>');
                   }
-                  this.content.innerHTML = content.join('&nbsp;');
+                  this.content.innerHTML = content.join('&nbsp;|&nbsp;');
             };
       };
       
