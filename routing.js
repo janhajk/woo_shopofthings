@@ -38,7 +38,7 @@ var basic = function(app, connection) {
         });
     });
     
-    app.get('/products/label/:sku/:link', /*auth.ensureAuthenticated,*/ function(req, res) {
+    app.get('/products/label/:sku/:link', auth.ensureAuthenticated, function(req, res) {
         const label = require(__dirname + '/lib/label.js');
         const sku = req.params.sku;
         const link = req.params.link;
@@ -55,7 +55,7 @@ var basic = function(app, connection) {
         });
     });
     
-    app.get('/label/adress/:orderId', /*auth.ensureAuthenticated,*/ function(req, res) {
+    app.get('/label/adress/:orderId', auth.ensureAuthenticated, function(req, res) {
         const label = require(__dirname + '/lib/label.js');
         const orderId = req.params.orderId;
         label.adress(orderId, res, function(e, data) {

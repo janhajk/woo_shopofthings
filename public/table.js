@@ -369,16 +369,16 @@
         document.getElementById('dashline').appendChild(div);
         this.div = div;
         div.style.display = 'none';
-
+        div.style.float = 'left';
         this.show = function() {
             this.div.style.display = 'block';
-            infoBlock.div.style.marginTop = '-30px';
+            // infoBlock.div.style.marginTop = '-30px';
             this.valueDom.focus();
             this.valueDom.select();
         };
         this.hide = function() {
             this.div.style.display = 'none';
-            infoBlock.div.style.marginTop = '';
+            // infoBlock.div.style.marginTop = '';
         };
     };
 
