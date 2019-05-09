@@ -31,7 +31,7 @@
                                     var data = JSON.parse(request.responseText);
                                     console.log(data);
                                     for (let i in data) {
-                                          this.orders.push(data[i]);
+                                          self.orders.push(data[i]);
                                     }
                                     self.render();
                               }
