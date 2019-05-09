@@ -47,7 +47,7 @@ var basic = function(app, connection) {
         });
     });
     
-    app.get('/orders/:status', /*auth.ensureAuthenticated,*/ function(req, res) {
+    app.get('/orders/:status', auth.ensureAuthenticated, function(req, res) {
         const woo = require(__dirname + '/lib/woo.js');
         const status = req.params.status;
         woo.getOrdersByStatus(status, function(e, data) {

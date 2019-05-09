@@ -11,16 +11,22 @@
 + show Total Warenwert and Total Verkaufswarenwert
 + Show name of variations
 + print label "Adressetikette"
++ show orders
 
 
+- remove 'undefined' entries
 - Filterbuttons for: Qty Alert, Qty Warning, On Order (ordered > 0)
-
+- update all data
 - cell background with min/max values > min = red;
 - edit all aditional properties
 - show stock with colored bar as Bootstrap "Stacked Progress Bars"
 - Quick edit categories
+- new database table for links
+- store snapshots from aliexpress
+- store productpage from seller
+- add new Product with title and snapshot
 
-- show orders
+
 
 - show Revenue and Profit (Profit from Cost)
 
