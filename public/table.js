@@ -573,7 +573,7 @@
                 infoBlock.update();
             };
             let searchClear = document.createElement('span');
-            searchClear.className = 'glyphicon glyphicon-remove-circle';
+            searchClear.className = 'glyphicon glyphicon-remove-circle searchClear';
             searchClear.addEventListener('click', function() {
                 iSearch.value = '';
             });
