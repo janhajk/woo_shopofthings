@@ -611,7 +611,7 @@
                 let button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'btn btn-primary btn-sm';
-                button.innerHTML = fButtons[i];
+                button.innerHTML = fButtons[i].title;
                 button.style.margin = '-3px 3px 3px 3px';
                 header.appendChild(button);
                 button.addEventListener('click', function() {
