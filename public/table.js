@@ -576,6 +576,7 @@
             searchClear.className = 'searchClear glyphicon glyphicon-remove-circle';
             searchClear.addEventListener('click', function() {
                 iSearch.value = '';
+                iSearch.onkeyup();
             });
             searchDiv.appendChild(iSearch);
             searchDiv.appendChild(searchClear);
