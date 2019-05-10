@@ -596,7 +596,7 @@
             buttonQtyAll.innerHTML = 'Qty 1';
             header.appendChild(buttonQtyAll);
             buttonQtyAll.addEventListener('click', function() {
-                filterByQty(0, 0);
+                filterByQty(0, 1);
             });
             var buttonQty1 = document.createElement('button');
             buttonQty1.type = 'button';
