@@ -605,6 +605,7 @@
             buttonQtyAll.type = 'button';
             buttonQtyAll.className = 'btn btn-primary btn-sm';
             buttonQtyAll.innerHTML = 'All';
+            buttonQtyAll.style.margin = '-3px 3px 3px 3px';
             header.appendChild(buttonQtyAll);
             buttonQtyAll.addEventListener('click', function() {
                 filterByQty(0, 1);
@@ -613,6 +614,7 @@
             buttonQty1.type = 'button';
             buttonQty1.className = 'btn btn-primary btn-sm';
             buttonQty1.innerHTML = 'Qty 1';
+            buttonQty1.style.margin = '-3px 3px 3px 3px';
             header.appendChild(buttonQty1);
             buttonQty1.addEventListener('click', function() {
                 filterByQty(fButtons[0].col1, fButtons[0].col2);
@@ -621,6 +623,7 @@
             buttonQty2.type = 'button';
             buttonQty2.className = 'btn btn-primary btn-sm';
             buttonQty2.innerHTML = 'Qty 2';
+            buttonQty2.style.margin = '-3px 3px 3px 3px';
             header.appendChild(buttonQty2);
             buttonQty2.addEventListener('click', function() {
                 filterByQty(fButtons[1].col1, fButtons[1].col2);
