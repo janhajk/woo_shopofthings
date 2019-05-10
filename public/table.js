@@ -580,8 +580,8 @@
                 let table = tbody;
                 let tr = table.rows;
                 for (let i = 0; i < tr.length; i++) { // all rows
-                    let val1 = Number(tr[i].cells[col1].innerHTML);
-                    let val2 = Number(tr[i].cells[col2].innerHTML);
+                    let val1 = (col1)?Number(tr[i].cells[col1].innerHTML):0;
+                    let val2 = (col1)?Number(tr[i].cells[col2].innerHTML):1;
                     if (val2 <= val1) {
                         tr[i].style.display = "table-row";
                     }
