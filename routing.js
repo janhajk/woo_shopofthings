@@ -74,7 +74,7 @@ var basic = function(app, connection) {
         let title = req.body.title;
         let snapshot = req.body.snapshot;
         woo.addProduct(title, snapshot, connection, function(e, success){
-            res.send(1);
+            res.send('ok');
         });
     });
 
