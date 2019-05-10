@@ -582,7 +582,7 @@
                 for (let i = 0; i < tr.length; i++) { // all rows
                     let val1 = tr[i].cells[col1].innerHTML;
                     let val2 = tr[i].cells[col2].innerHTML;
-                    if (val1 <= val2) {
+                    if (val2 <= val1) {
                         tr[i].style.display = "table-row";
                     }
                     else {
@@ -590,6 +590,14 @@
                     }
                 }
             };
+            var buttonQtyAll = document.createElement('button');
+            buttonQtyAll.type = 'button';
+            buttonQtyAll.className = 'btn btn-primary btn-sm';
+            buttonQtyAll.innerHTML = 'Qty 1';
+            header.appendChild(buttonQtyAll);
+            buttonQtyAll.addEventListener('click', function() {
+                filterByQty(0, 0);
+            });
             var buttonQty1 = document.createElement('button');
             buttonQty1.type = 'button';
             buttonQty1.className = 'btn btn-primary btn-sm';
@@ -598,12 +606,14 @@
             buttonQty1.addEventListener('click', function() {
                 filterByQty(fButtons[0].col1, fButtons[0].col2);
             });
-
             var buttonQty2 = document.createElement('button');
             buttonQty2.type = 'button';
             buttonQty2.className = 'btn btn-primary btn-sm';
             buttonQty2.innerHTML = 'Qty 2';
             header.appendChild(buttonQty2);
+            buttonQty2.addEventListener('click', function() {
+                filterByQty(fButtons[1].col1, fButtons[1].col2);
+            });
 
             // Table Wrapper
             var div = document.createElement('div');
