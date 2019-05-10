@@ -11,6 +11,7 @@
             var div = document.createElement('div');
             div.style.width = 'auto';
             div.style.float = 'right';
+            div.style.padding = '5px';
             var button = document.createElement('button');
             button.type = 'button';
             button.className = 'btn btn-info';
