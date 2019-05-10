@@ -21,7 +21,7 @@
             div.style.float = 'right';
             div.id = 'ping';
             var span = document.createElement('span');
-            span.class = icon.offline;
+            span.className = icon.offline;
             div.appendChild(span);
             this.glyph = span;
             parent.appendChild(div);
@@ -31,14 +31,14 @@
                   request.open('GET', '/ping', true);
                   request.onload = function() {
                         if (request.status >= 200 && request.status < 405) {
-                              self.glyph.class = icon.online;
+                              self.glyph.className = icon.online;
                         }
                         else {
-                              self.glyph.class = icon.offline;
+                              self.glyph.className = icon.offline;
                         }
                   };
                   request.onerror = function() {
-                        self.glyph.class = icon.offline;
+                        self.glyph.className = icon.offline;
                   };
                   request.send();
             };
