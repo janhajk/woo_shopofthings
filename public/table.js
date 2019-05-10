@@ -591,6 +591,10 @@
                 let table = tbody;
                 let tr = table.rows;
                 for (let i = 0; i < tr.length; i++) { // all rows
+                    if (tr[i].cells[col2].innerHTML === '') {
+                        tr[i].style.display = "none";
+                        continue;
+                    }
                     let val1 = (col1) ? Number(tr[i].cells[col1].innerHTML) : 1;
                     let val2 = (col1) ? Number(tr[i].cells[col2].innerHTML) : 0;
                     if (val2 <= val1) {
