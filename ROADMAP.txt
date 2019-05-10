@@ -13,7 +13,7 @@
 + print label "Adressetikette"
 + show orders
 
-
+- ping to check if online
 - remove 'undefined' entries
 - Filterbuttons for: Qty Alert, Qty Warning, On Order (ordered > 0)
 - update all data
