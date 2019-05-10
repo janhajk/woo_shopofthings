@@ -26,7 +26,7 @@
                   let snapshot = prompt('URL of the Purchase-Site');
                   let params = 'title=' + title + '&snapshot=' + snapshot;
                   let request = new XMLHttpRequest();
-                  request.open('POST', '/ping', true);
+                  request.open('POST', '/products/add', true);
                   request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                   request.onload = function() {
                         if (request.status >= 200 && request.status < 404) {

@@ -68,6 +68,15 @@ var basic = function(app, connection) {
             //res.send(e ? e : data);
         });
     });
+    
+    app.post('products/add', auth.ensureAuthenticated, function(req, res){
+        const woo = require(__dirname + '/lib/woo.js');
+        let title = req.body.title;
+        let snapshot = req.body.snapshot;
+        woo.addProduct(title, snapshot, connection, function(e, success){
+            res.send(1);
+        });
+    });
 
     app.get('/products/:id/variations/:id2/:key/:value', auth.ensureAuthenticated, function(req, res) {
         const woo = require(__dirname + '/lib/woo.js');
@@ -92,14 +101,6 @@ var basic = function(app, connection) {
         });
     });
     
-    app.post('products/add', auth.ensureAuthenticated, function(req, res){
-        const woo = require(__dirname + '/lib/woo.js');
-        let title = req.body.title;
-        let snapshot = req.body.snapshot;
-        woo.addProduct(title, snapshot, connection, function(e, success){
-            res.send(1);
-        });
-    });
     
 };
 
