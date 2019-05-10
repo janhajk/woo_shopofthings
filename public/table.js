@@ -463,7 +463,7 @@
             }, timeout);
         };
     };
-    
+
 
     /**
      * 
@@ -530,7 +530,7 @@
             // table Body
             var tbody = document.createElement('tbody');
             t.appendChild(tbody);
-            
+
             // Filter / Search Header
             var header = document.createElement('div');
             header.style.width = '100%';
@@ -570,22 +570,46 @@
                 infoBlock.update();
             };
             header.appendChild(iSearch);
-            
+
             // Filter Buttons
             var fButtons = [
-                {title: 'Qt1', col: 'Qty 1', colC: 'Qty'}
+                { title: 'Qt1', col1: 8, col2: 7 },
+                { title: 'Qt2', col1: 9, col2: 7 }
             ];
+            var filterByQty = function(col1, col2) {
+                let table = tbody;
+                let tr = table.rows;
+                for (let i = 0; i < tr.length; i++) { // all rows
+                    let val1 = tr[i].cells[col1].innerHTML;
+                    let val2 = tr[i].cells[col2].innerHTML;
+                    if (val1 <= val2) {
+                        tr[i].style.display = "table-row";
+                    }
+                    else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            };
             var buttonQty1 = document.createElement('button');
             buttonQty1.type = 'button';
             buttonQty1.className = 'btn btn-primary btn-sm';
             buttonQty1.innerHTML = 'Qty 1';
             header.appendChild(buttonQty1);
+            buttonQty1.addEventListener('click', function() {
+                filterByQty(fButtons[0].col1, fButtons[0].col2);
+            });
+
+            var buttonQty2 = document.createElement('button');
+            buttonQty2.type = 'button';
+            buttonQty2.className = 'btn btn-primary btn-sm';
+            buttonQty2.innerHTML = 'Qty 2';
+            header.appendChild(buttonQty2);
 
             // Table Wrapper
             var div = document.createElement('div');
             div.style.width = '100%';
             //div.className = 'table-responsive';
-            
+
             div.appendChild(header);
             div.appendChild(t);
             return [div, t];
