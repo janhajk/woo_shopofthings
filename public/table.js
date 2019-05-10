@@ -593,7 +593,7 @@
             var buttonQtyAll = document.createElement('button');
             buttonQtyAll.type = 'button';
             buttonQtyAll.className = 'btn btn-primary btn-sm';
-            buttonQtyAll.innerHTML = 'Qty 1';
+            buttonQtyAll.innerHTML = 'All';
             header.appendChild(buttonQtyAll);
             buttonQtyAll.addEventListener('click', function() {
                 filterByQty(0, 1);
