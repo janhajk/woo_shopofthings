@@ -536,11 +536,14 @@
             header.style.width = '100%';
 
             // Search Field
+            var searchDiv = document.createElement('div');
+            searchDiv.className = 'btn-group';
             var iSearch = document.createElement('input');
             iSearch.class = 'form-control';
             iSearch.type = 'text';
             iSearch.placeholder = 'Search..';
             iSearch.style.marginBottom = '10px';
+            iSearch.style.width = '200px';
             iSearch.onkeyup = function() {
                 var input, table, tr, i;
                 input = this.value.toLowerCase().split(' ');
@@ -569,7 +572,14 @@
                 }
                 infoBlock.update();
             };
-            header.appendChild(iSearch);
+            let searchClear = document.createElement('span');
+            searchClear.className = 'glyphicon glyphicon-remove-circle';
+            searchClear.addEventListener('click', function() {
+                iSearch.value = '';
+            });
+            searchDiv.appendChild(iSearch);
+            searchDiv.appendChild(searchClear);
+            header.appendChild(searchDiv);
 
             // Filter Buttons
             var fButtons = [
@@ -580,8 +590,8 @@
                 let table = tbody;
                 let tr = table.rows;
                 for (let i = 0; i < tr.length; i++) { // all rows
-                    let val1 = (col1)?Number(tr[i].cells[col1].innerHTML):1;
-                    let val2 = (col1)?Number(tr[i].cells[col2].innerHTML):0;
+                    let val1 = (col1) ? Number(tr[i].cells[col1].innerHTML) : 1;
+                    let val2 = (col1) ? Number(tr[i].cells[col2].innerHTML) : 0;
                     if (val2 <= val1) {
                         tr[i].style.display = "table-row";
                     }
