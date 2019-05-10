@@ -19,6 +19,7 @@
             var div = document.createElement('div');
             div.style.width = 'auto';
             div.style.float = 'right';
+            div.id = 'ping';
             var span = document.createElement('span');
             span.class = icon.offline;
             div.appendChild(span);
