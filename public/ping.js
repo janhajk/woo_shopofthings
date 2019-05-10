@@ -30,7 +30,7 @@
                   let request = new XMLHttpRequest();
                   request.open('GET', '/ping', true);
                   request.onload = function() {
-                        if (request.status >= 200 && request.status < 405) {
+                        if (request.status >= 200 && request.status < 404) {
                               self.glyph.className = icon.online;
                         }
                         else {
