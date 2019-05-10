@@ -13,9 +13,10 @@
 + print label "Adressetikette"
 + show orders
 + ping to check if online
++ Filterbuttons for: Qty Alert, Qty Warning, On Order (ordered > 0)
+
 
 - remove 'undefined' entries
-- Filterbuttons for: Qty Alert, Qty Warning, On Order (ordered > 0)
 - update all data
 - cell background with min/max values > min = red;
 - edit all aditional properties
@@ -25,7 +26,7 @@
 - store snapshots from aliexpress
 - store productpage from seller
 - add new Product with title and snapshot
-
+- show rows count (incl filtered)
 
 
 - show Revenue and Profit (Profit from Cost)

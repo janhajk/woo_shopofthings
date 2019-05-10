@@ -584,6 +584,7 @@
 
             // Filter Buttons
             var fButtons = [
+                { title: 'All', col1: 0, col2: 1 },
                 { title: 'Qt1', col1: 8, col2: 7 },
                 { title: 'Qt2', col1: 9, col2: 7 }
             ];
@@ -605,33 +606,18 @@
                     }
                 }
             };
-            var buttonQtyAll = document.createElement('button');
-            buttonQtyAll.type = 'button';
-            buttonQtyAll.className = 'btn btn-primary btn-sm';
-            buttonQtyAll.innerHTML = 'All';
-            buttonQtyAll.style.margin = '-3px 3px 3px 3px';
-            header.appendChild(buttonQtyAll);
-            buttonQtyAll.addEventListener('click', function() {
-                filterByQty(0, 1);
-            });
-            var buttonQty1 = document.createElement('button');
-            buttonQty1.type = 'button';
-            buttonQty1.className = 'btn btn-primary btn-sm';
-            buttonQty1.innerHTML = 'Qty 1';
-            buttonQty1.style.margin = '-3px 3px 3px 3px';
-            header.appendChild(buttonQty1);
-            buttonQty1.addEventListener('click', function() {
-                filterByQty(fButtons[0].col1, fButtons[0].col2);
-            });
-            var buttonQty2 = document.createElement('button');
-            buttonQty2.type = 'button';
-            buttonQty2.className = 'btn btn-primary btn-sm';
-            buttonQty2.innerHTML = 'Qty 2';
-            buttonQty2.style.margin = '-3px 3px 3px 3px';
-            header.appendChild(buttonQty2);
-            buttonQty2.addEventListener('click', function() {
-                filterByQty(fButtons[1].col1, fButtons[1].col2);
-            });
+
+            for (let i in fButtons) {
+                let button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'btn btn-primary btn-sm';
+                button.innerHTML = fButtons[i];
+                button.style.margin = '-3px 3px 3px 3px';
+                header.appendChild(button);
+                button.addEventListener('click', function() {
+                    filterByQty(fButtons[i].col1, fButtons[i].col2);
+                });
+            }
 
             // Table Wrapper
             var div = document.createElement('div');
