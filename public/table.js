@@ -141,6 +141,10 @@
                 };
             }
         },
+        'sold': {
+            col: 'total_sales',
+            round: 0,
+        },
         'Categories': {
             formula: function(cell, item, cb) {
                 let cats = [];
