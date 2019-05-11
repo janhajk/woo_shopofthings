@@ -825,8 +825,8 @@
          */
         this.tValue = function() {
             var html = this.value;
-            if (typeof html === undefined) {
-                html = '';
+            if (this.value === undefined) {
+                return '';
             }
             if (typeof html === 'number') {
                 this.dom.style.textAlign = 'right';
