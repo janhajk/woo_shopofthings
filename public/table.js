@@ -29,7 +29,7 @@
         },
         'Title': {
             formula: function(cell, item, cb) {
-                cell.value = (item.name != undefined) ? item.name : '&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style:italic">' + item.attributes[0].option + '</span>';
+                cell.value = (!item.parent) ? item.name : '&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style:italic">' + item.attributes[0].option + ' (' + item.parent.name + ')</span>';
                 cb();
             },
             ondblclick: function(item) {
@@ -207,7 +207,7 @@
 
                         // Load variations
                         for (let s in data[i].variations) {
-                            let product = new Product(data[i].variations[s], data[i].id);
+                            let product = new Product(data[i].variations[s], data[i]);
                             product.load();
                             // Add product to collection
                             products.add(product);
@@ -502,8 +502,8 @@
             //$.bootstrapSortable({ applyLast: true });
         };
         /**
-         * Products-Table
-         * Creates empty products table
+         * Items-Table
+         * Creates empty Items table
          * Data-rows are added asynchronously
          */
         this.table = function() {
@@ -652,7 +652,7 @@
      */
     var Product = function(data, parent) {
 
-        this.parent = (typeof parent !== 'undefined') ? parent : 0;
+        this.parent = (typeof parent !== 'undefined') ? {id: parent.id, name: parent.name } : 0;
 
         var self = this;
 
@@ -716,9 +716,10 @@
             }
         };
 
+
         /**
          * 
-         * Loads Details of asset
+         * Loads Details of item
          * 
          * 
          * 
