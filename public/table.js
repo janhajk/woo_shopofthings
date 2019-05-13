@@ -29,7 +29,7 @@
         },
         'Title': {
             formula: function(cell, item, cb) {
-                cell.value = (!item.parent) ? item.name : '&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style:italic">' + item.attributes[0].option + ' (' + item.parent.name + ')</span>';
+                cell.value = (!item.parent) ? item.name : '&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style:italic">' + item.attributes[0].option + ' (<span style=font-size:0.5em;>' + item.parent.name + '</span>)</span>';
                 cb();
             },
             ondblclick: function(item) {

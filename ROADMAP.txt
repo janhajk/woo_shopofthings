@@ -16,6 +16,7 @@
 + Filterbuttons for: Qty Alert, Qty Warning, On Order (ordered > 0)
 + add new Product with title and snapshot
 + new database table for links
++ show name of variations products
 
 - show total sales in table
 - remove 'undefined' entries
