@@ -549,7 +549,7 @@
             iSearch.style.marginBottom = '10px';
             iSearch.style.width = '200px';
             iSearch.onkeyup = function() {
-                var input, table, tr, i;
+                let input, table, tr, i;
                 input = this.value.toLowerCase().split(' ');
                 input = input.filter(e => e !== ''); // Remove Empty strings
 
@@ -699,6 +699,12 @@
 
             // Variation with different Background color
             tr.style.backgroundColor = (this.parent) ? '#f9f9c5' : '#FFF';
+            tr.onmouseover = function(){
+                tr.style.backgroundColor = '#f7c0c0';
+            };
+            tr.onmouseout = function(){
+                tr.style.backgroundColor = (self.parent) ? '#f9f9c5' : '#FFF';
+            };
 
             for (let i in cells) {
                 tr.appendChild(cells[i]);
