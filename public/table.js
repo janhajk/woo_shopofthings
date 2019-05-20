@@ -178,7 +178,7 @@
         frmEdit = new EditFrm();
         infoBlock = new InfoBlock();
         bAlert = new BAlert();
-        var content = document.getElementById('productContent');
+        var content = document.getElementById('content');
 
         // Init positions collection
         products = new Products(content);
@@ -219,7 +219,7 @@
                     console.log(e);
                     console.log(new Date().toLocaleString() + ': not logged in');
                     frmLogin.show();
-                    document.getElementById('ProductContent').innerHTML = 'Not logged in.';
+                    document.getElementById('content').innerHTML = 'Not logged in.';
                 }
             }
             else {
@@ -255,7 +255,7 @@
                     console.log(e);
                     console.log(new Date().toLocaleString() + ': not logged in');
                     frmLogin.show();
-                    document.getElementById('productContent').innerHTML = 'Not logged in.';
+                    document.getElementById('content').innerHTML = 'Not logged in.';
                 }
             }
             else {

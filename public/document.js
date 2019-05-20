@@ -4,7 +4,7 @@
       var doc;
 
       document.addEventListener('DOMContentLoaded', function() {
-            doc = new Document('Produkte');
+            // doc = new Document('Produkte');
 
       });
 
