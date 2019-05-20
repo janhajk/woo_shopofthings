@@ -214,6 +214,13 @@
                         }
                     }
                     products.tableRender();
+                    // Hide Preloader
+                    $(window).on('load', function() {
+                        setTimeout(function() {
+                            $('.preloader-backdrop').fadeOut(200);
+                            $('body').addClass('has-animation');
+                        }, 0);
+                    });
                 }
                 catch (e) {
                     console.log(e);
@@ -652,7 +659,7 @@
      */
     var Product = function(data, parent) {
 
-        this.parent = (typeof parent !== 'undefined') ? {id: parent.id, name: parent.name } : 0;
+        this.parent = (typeof parent !== 'undefined') ? { id: parent.id, name: parent.name } : 0;
 
         var self = this;
 
@@ -699,10 +706,10 @@
 
             // Variation with different Background color
             tr.style.backgroundColor = (this.parent) ? '#f9f9c5' : '#FFF';
-            tr.onmouseover = function(){
+            tr.onmouseover = function() {
                 tr.style.backgroundColor = '#f7c0c0';
             };
-            tr.onmouseout = function(){
+            tr.onmouseout = function() {
                 tr.style.backgroundColor = (self.parent) ? '#f9f9c5' : '#FFF';
             };
 

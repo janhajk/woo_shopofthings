@@ -12,14 +12,6 @@ var APP = function() {
 
 $(function() {
 
-  // Preloader
-  $(window).on('load', function() {
-    setTimeout(function() {
-      $('.preloader-backdrop').fadeOut(200),
-        $('body').addClass('has-animation')
-    }, 0)
-  });
-
   $.fn.backdrop = function() {
     $(this).toggleClass('shined');
     $('body').toggleClass('has-backdrop');
