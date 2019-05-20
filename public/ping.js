@@ -13,8 +13,8 @@
       var Ping = function(parent) {
             var self = this;
             var icon = {
-                  online: 'glyphicon glyphicon-signal' + ' nav-link toolbar-icon',
-                  offline: 'glyphicon glyphicon-alert' + ' nav-link toolbar-icon'
+                  online: 'ti-signal' + ' nav-link toolbar-icon',
+                  offline: 'ti-face-sad' + ' nav-link toolbar-icon'
             };
             var div = document.createElement('li');
             div.style.width = 'auto';
