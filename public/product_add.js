@@ -3,7 +3,7 @@
       var add;
 
       document.addEventListener('DOMContentLoaded', function() {
-            var dashline = document.getElementById('dashline');
+            var dashline = document.getElementById('navbar');
             add = new Add(dashline);
       });
 

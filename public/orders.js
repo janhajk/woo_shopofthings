@@ -3,7 +3,7 @@
       var orderBlock;
 
       document.addEventListener('DOMContentLoaded', function() {
-            var dashline = document.getElementById('dashline');
+            var dashline = document.getElementById('navbar');
             orderBlock = new OrderBlock(dashline);
             orderBlock.update();
             setInterval(orderBlock.update, 10000);

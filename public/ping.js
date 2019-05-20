@@ -3,7 +3,7 @@
       var ping;
 
       document.addEventListener('DOMContentLoaded', function() {
-            var dashline = document.getElementById('dashline');
+            var dashline = document.getElementById('navbar');
             ping = new Ping(dashline);
             ping.update();
             setInterval(ping.update, 5000);
