@@ -13,15 +13,13 @@
       var Ping = function(parent) {
             var self = this;
             var icon = {
-                  online: 'ti-signal' + ' nav-link toolbar-icon',
-                  offline: 'ti-face-sad' + ' nav-link toolbar-icon'
+                  online: 'ti-signal' + ' timeout-toggler-icon rel',
+                  offline: 'ti-face-sad' + ' timeout-toggler-icon rel'
             };
             var div = document.createElement('li');
-            div.style.width = 'auto';
-            div.style.float = 'right';
             div.id = 'ping';
             div.className = 'timeout-toggler';
-            var span = document.createElement('i');
+            var span = document.createElement('span');
             span.className = icon.offline;
             div.appendChild(span);
             this.glyph = span;
