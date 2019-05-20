@@ -215,12 +215,10 @@
                     }
                     products.tableRender();
                     // Hide Preloader
-                    $(window).on('load', function() {
-                        setTimeout(function() {
-                            $('.preloader-backdrop').fadeOut(200);
-                            $('body').addClass('has-animation');
-                        }, 0);
-                    });
+                    setTimeout(function() {
+                        $('.preloader-backdrop').fadeOut(200);
+                        $('body').addClass('has-animation');
+                    }, 0);
                 }
                 catch (e) {
                     console.log(e);
@@ -228,12 +226,10 @@
                     frmLogin.show();
                     document.getElementById('content').innerHTML = 'Not logged in.';
                     // Hide Preloader
-                    $(window).on('load', function() {
-                        setTimeout(function() {
-                            $('.preloader-backdrop').fadeOut(200);
-                            $('body').addClass('has-animation');
-                        }, 0);
-                    });
+                    setTimeout(function() {
+                        $('.preloader-backdrop').fadeOut(200);
+                        $('body').addClass('has-animation');
+                    }, 0);
                 }
             }
             else {
