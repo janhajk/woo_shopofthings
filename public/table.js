@@ -227,6 +227,13 @@
                     console.log(new Date().toLocaleString() + ': not logged in');
                     frmLogin.show();
                     document.getElementById('content').innerHTML = 'Not logged in.';
+                    // Hide Preloader
+                    $(window).on('load', function() {
+                        setTimeout(function() {
+                            $('.preloader-backdrop').fadeOut(200);
+                            $('body').addClass('has-animation');
+                        }, 0);
+                    });
                 }
             }
             else {
