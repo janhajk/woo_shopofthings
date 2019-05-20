@@ -21,7 +21,7 @@
             div.style.float = 'right';
             div.id = 'ping';
             div.className = 'timeout-toggler';
-            var span = document.createElement('span');
+            var span = document.createElement('i');
             span.className = icon.offline;
             div.appendChild(span);
             this.glyph = span;
