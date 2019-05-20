@@ -8,7 +8,7 @@
       });
 
       var Add = function(parent) {
-            var div = document.createElement('div');
+            var div = document.createElement('li');
             div.style.width = 'auto';
             div.style.float = 'right';
             div.style.padding = '5px';

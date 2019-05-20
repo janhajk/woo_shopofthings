@@ -16,7 +16,7 @@
                   online: 'glyphicon glyphicon-signal',
                   offline: 'glyphicon glyphicon-alert'
             };
-            var div = document.createElement('div');
+            var div = document.createElement('li');
             div.style.width = 'auto';
             div.style.float = 'right';
             div.id = 'ping';

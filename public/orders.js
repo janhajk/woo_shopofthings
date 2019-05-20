@@ -13,7 +13,7 @@
 
       var OrderBlock = function(parent) {
             var self = this;
-            let div = document.createElement('div');
+            let div = document.createElement('li');
             div.style.width = 'auto';
             div.style.float = 'right';
             let title = document.createElement('div');
