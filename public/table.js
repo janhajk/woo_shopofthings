@@ -197,7 +197,7 @@
                 try {
                     var data = JSON.parse(request.responseText);
                     console.log(data);
-                    document.getElementById('dashline').removeChild(frmLogin.div);
+                    document.getElementById('navbar').removeChild(frmLogin.div);
 
                     for (let i in data) {
                         let product = new Product(data[i]);
@@ -278,7 +278,7 @@
      * 
      */
     var Login = function() {
-        var div = document.createElement('div');
+        var div = document.createElement('li');
         var form = document.createElement('form');
         form.action = "/login";
         form.method = "POST";
@@ -297,7 +297,7 @@
         form.appendChild(password);
         form.appendChild(submit);
         div.appendChild(form);
-        document.getElementById('dashline').appendChild(div);
+        document.getElementById('navbar').appendChild(div);
         this.div = div;
         this.form = form;
         div.style.display = 'none';
@@ -318,7 +318,7 @@
         this.id = null;
         this.item = null;
 
-        var div = document.createElement('div');
+        var div = document.createElement('li');
 
         var value = document.createElement('input');
         value.type = "text";
@@ -370,10 +370,10 @@
         div.appendChild(value);
         div.appendChild(submit);
         div.appendChild(cancel);
-        document.getElementById('dashline').appendChild(div);
+        document.getElementById('navbar').appendChild(div);
         this.div = div;
         div.style.display = 'none';
-        div.style.float = 'left';
+        // div.style.float = 'left';
         this.show = function() {
             this.div.style.display = 'block';
             // infoBlock.div.style.marginTop = '-30px';
@@ -392,7 +392,7 @@
             { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0, factor: 7 },
             { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0, factor: 7 },
         ];
-        let div = document.createElement('div');
+        let div = document.createElement('li');
         div.style.display = 'table';
         div.style.width = 'auto';
         div.style.float = 'right';
@@ -415,7 +415,7 @@
 
         this.div = div;
 
-        document.getElementById('dashline').appendChild(div);
+        document.getElementById('navbar').appendChild(div);
 
         this.update = function() {
             // Reset values
@@ -445,9 +445,9 @@
 
 
     var BAlert = function() {
-        var div = document.createElement('div');
+        var div = document.createElement('li');
         div.role = 'alert';
-        document.getElementById('dashline').appendChild(div);
+        document.getElementById('navbar').appendChild(div);
         div.style.display = 'none';
         var self = this;
         this.div = div;
