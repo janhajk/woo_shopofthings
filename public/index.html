@@ -4,59 +4,270 @@
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>ShopOfThings Admin Console</title>
+   <title>Blocks</title>
    <!--<link rel="icon" href="images/logo/logo32.png">-->
 
-   <!-- jQuery -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   
-   <!-- Bootstrap -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-   <!-- Bootstrap sortable -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js"></script>
-   <link rel="stylesheet" href="3rdparty/bootstrap-sortable/Contents/bootstrap-sortable.css" />
+   <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
 
-   <!-- Chart.js Bundle -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-   <!-- Highcharts.js Bundle -->
-   <script src="https://code.highcharts.com/stock/highstock.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data-2012-2022.min.js"></script>
-   
-   <!-- Async -->
-   <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/async/2.6.1/async.min.js"></script>-->
-   
-   <!-- Socket.io -->
-   <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>-->
+   <!-- Popper JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.js"></script>
 
-   <!-- Custom JS -->
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.js"></script>
+
+
+
+   <link href="3rdparty/themify-icons/themify-icons.css" rel="stylesheet">
+
+   <!--font-Awesome-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.js"></script>
+
+   <!--Animate-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+
+   <!--Bootstrap Select-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.js"></script>
+
+   <!--Metis Menu-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.4/metisMenu.js"></script>
+
+   <!--Toastr-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
+   <!--Slim Scroll-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
+
+   <!--Validate-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+   <!--Custom JS and CSS-->
+   <link rel="stylesheet" type="text/css" href="styles.css" />
+
+</head>
+
+<body class="fixed-navbar has-animation">
+   <div class="page-wrapper">
+      <!-- START HEADER-->
+      <header class="header">
+         <div class="page-brand">
+            <a href="index.html">
+                    <span class="brand">Blocks</span>
+                    <span class="brand-mini">BK</span>
+                </a>
+         </div>
+         <div class="flexbox flex-1">
+
+
+
+            <!-- START TOP-LEFT TOOLBAR-->
+            <ul class="nav navbar-toolbar" style="display:inherit">
+               <li>
+                  <a class="nav-link sidebar-toggler js-sidebar-toggler" href="javascript:">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+               </li>
+               <li>
+                  <a class="nav-link search-toggler js-search-toggler"><i class="ti-search"></i>
+                            <span>Suchen...</span>
+                        </a>
+               </li>
+            </ul>
+            <!-- END TOP-LEFT TOOLBAR-->
+
+
+
+
+
+            <!-- START TOP-RIGHT TOOLBAR-->
+            <ul class="nav navbar-toolbar" id="navbar" style="display:inherit">
+
+
+               <!--Wecker-->
+               <li class="timeout-toggler">
+                  <a class="nav-link toolbar-icon" data-toggle="modal" data-target="#session-dialog" href="javascript:;"><i class="ti-alarm-clock timeout-toggler-icon rel"><span class="notify-signal"></span></i></a>
+               </li>
+
+
+
+
+
+
+               <!--Dropdown User-->
+               <li class="dropdown dropdown-user">
+                  <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
+                            <span>Jan</span>
+                            <img src="http://admincast.com/adminca/preview/admin_1/html/assets/img/users/admin-image.png" alt="image" />
+                        </a>
+                  <div class="dropdown-menu dropdown-arrow dropdown-menu-right admin-dropdown-menu">
+                     <div class="dropdown-arrow"></div>
+                     <div class="dropdown-header">
+                        <div class="admin-avatar">
+                           <img src="http://admincast.com/adminca/preview/admin_1/html/assets/img/users/admin-image.png" alt="image" />
+                        </div>
+                        <div>
+                           <h5 class="font-strong text-white">Super User</h5>
+                           <div>
+                              <span class="admin-badge mr-3"><i class="ti-alarm-clock mr-2"></i>30m.</span>
+                              <span class="admin-badge"><i class="ti-lock mr-2"></i>Safe Mode</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="admin-menu-features">
+                        <a class="admin-features-item" href="javascript:;"><i class="ti-user"></i>
+                                    <span>PROFILE</span>
+                                </a>
+                        <a class="admin-features-item" href="javascript:;"><i class="ti-support"></i>
+                                    <span>SUPPORT</span>
+                                </a>
+                        <a class="admin-features-item" href="javascript:;"><i class="ti-settings"></i>
+                                    <span>SETTINGS</span>
+                                </a>
+                     </div>
+                     <div class="admin-menu-content">
+                        <div class="text-muted mb-2">Your Wallet</div>
+                        <div><i class="ti-wallet h1 mr-3 text-light"></i>
+                           <span class="h1 text-success"><sup>$</sup>12.7k</span>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                           <a class="text-muted" href="javascript:;">Earnings history</a>
+                           <a class="d-flex align-items-center" href="javascript:;">Logout<i class="ti-shift-right ml-2 font-20"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </li>
+               <!--END User-->
+
+
+
+
+               <!--Quick Sidebar Toggler-->
+               <li>
+                  <a class="nav-link quick-sidebar-toggler">
+                            <span class="ti-align-right"></span>
+                        </a>
+               </li>
+               <!--END Quick Sidebar-->
+
+
+            </ul>
+            <!-- END TOP-RIGHT TOOLBAR-->
+         </div>
+      </header>
+      <!-- END HEADER-->
+
+
+
+
+      <!-- START SIDEBAR-->
+      <nav class="page-sidebar " id="sidebar">
+         <div id="sidebar-collapse ">
+            <ul class="side-menu metismenu">
+               <li class="active ">
+                  <a href="javascript:; "><i class="sidebar-item-icon ti-home "></i>
+                            <span class="nav-label ">Documents</span><i class="fa fa-angle-left arrow "></i></a>
+                  <ul class="nav-2-level collapse in " aria-expanded="true ">
+                     <li>
+                        <a class="active " href="index.html ">Meine Dokumente</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="heading">Blocks</li>
+               <li>
+                  <a href="javascript:;"><i class="sidebar-item-icon ti-paint-roller"></i>
+                            <span class="nav-label ">Meine Blocks</span><i class="fa fa-angle-left arrow"></i></a>
+                  <ul class="nav-2-level collaps" aria-expanded="false">
+                     <li>
+                        <a href="# ">Häufig verwendet</a>
+                     </li>
+                     <li>
+                        <a href="#">Neuste</a>
+                     </li>
+                     <li>
+                        <a href="#">Übersicht</a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="javascript:; "><i class="sidebar-item-icon ti-package"></i>
+                            <span class="nav-label ">Blocks Market</span><i class="fa fa-angle-left arrow"></i></a>
+                  <ul class="nav-2-level collaps" aria-expanded="false">
+                     <li>
+                        <a href="# ">SIA</a>
+                     </li>
+                     <li>
+                        <a href="#">Neuste</a>
+                     </li>
+                     <li>
+                        <a href="#">Übersicht</a>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+            <div class="sidebar-footer ">
+               <a href="javascript:; "><i class="ti-announcement "></i></a>
+               <a href="javascript:;"><i class="ti-calendar "></i></a>
+               <a href="javascript:; "><i class="ti-comments "></i></a>
+               <a href="javascript:;"><i class="ti-power-off "></i></a>
+            </div>
+         </div>
+      </nav>
+      <!-- END SIDEBAR-->
+
+
+
+
+      <div class="content-wrapper">
+         <!-- START PAGE CONTENT-->
+         <div class="page-content fade-in-up" id="content">
+            <!--CONTENT-->
+         </div>
+         <!-- END PAGE CONTENT-->
+         <footer class="page-footer ">
+            <div class="font-13 ">2019 © <b>Jan Schär Consulting</b> - Blocked up!</div>
+            <div>
+               <a class="px-3 pl-4 " href="" target="_blank ">Hotline</a>
+               <a class="px-3 " href="" target="_blank ">Hilfe</a>
+            </div>
+            <div class="to-top " style="display: none; "><i class="fa fa-angle-double-up "></i></div>
+         </footer>
+      </div>
+   </div>
+
+   <!-- BEGIN PAGA BACKDROPS-->
+   <div class="sidenav-backdrop backdrop"></div>
+   <div class="preloader-backdrop">
+      <div class="page-preloader">Loading</div>
+   </div>
+   <!-- END PAGA BACKDROPS-->
+   <!-- START SEARCH PANEL-->
+   <form class="search-top-bar" action="search.html">
+      <input class="form-control search-input" type="text" placeholder="Search...">
+      <button class="reset input-search-icon"><i class="ti-search"></i></button>
+      <button class="reset input-search-close" type="button"><i class="ti-close"></i></button>
+   </form>
+   <!-- END SEARCH PANEL-->
+
+
+   <script src="app.js"></script>
+   <script src="notifications.js"></script>
+   <script src="code.js"></script>
+   <script src="document.js"></script>
+   
    <script src="ping.js"></script>
    <script src="table.js"></script>
    <script src="orders.js"></script>
    <script src="product_add.js"></script>
-   
-   
-   <link rel="stylesheet" type="text/css" href="styles.css" />
 
-
-</head>
-
-<body style="padding-top:70px;">
-   <div class="container-fluid">
-      <nav class="navbar navbar-default navbar-fixed-top">
-         <div class="container" id="dashline">
-         </div>
-      </nav>
-      <div id="content">
-      </div>
-   </div>
 </body>
 
 </html>
-
-
-

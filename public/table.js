@@ -178,7 +178,7 @@
         frmEdit = new EditFrm();
         infoBlock = new InfoBlock();
         bAlert = new BAlert();
-        var content = document.getElementById('content');
+        var content = document.getElementById('productContent');
 
         // Init positions collection
         products = new Products(content);
@@ -219,7 +219,7 @@
                     console.log(e);
                     console.log(new Date().toLocaleString() + ': not logged in');
                     frmLogin.show();
-                    document.getElementById('content').innerHTML = 'Not logged in.';
+                    document.getElementById('ProductContent').innerHTML = 'Not logged in.';
                 }
             }
             else {
@@ -255,7 +255,7 @@
                     console.log(e);
                     console.log(new Date().toLocaleString() + ': not logged in');
                     frmLogin.show();
-                    document.getElementById('content').innerHTML = 'Not logged in.';
+                    document.getElementById('productContent').innerHTML = 'Not logged in.';
                 }
             }
             else {
@@ -508,7 +508,7 @@
          */
         this.table = function() {
             var t = document.createElement('table');
-            t.className = ['table', 'table-bordered', 'table-hover', 'table-responsive', 'table-condensed', 'sortable'].join(' ');
+            t.className = ['table', 'table-bordered', 'table-responsive', 'table-condensed', 'sortable'].join(' ');
 
             // table header
             var thead = document.createElement('thead');
