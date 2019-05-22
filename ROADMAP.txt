@@ -18,9 +18,9 @@
 + new database table for links
 + show name of variations products
 + show total sales in table
++ change theme to admin theme
 
 
-- change theme to admin theme
 - show orders list
 - 
 
@@ -31,7 +31,7 @@
 - show stock with colored bar as Bootstrap "Stacked Progress Bars"
 - Quick edit categories
 
-- store/show snapshots from aliexpress
+- store/show aliexpress-snapshot-pages-links
 - store productpage from seller
 - show rows count (incl filtered)
 

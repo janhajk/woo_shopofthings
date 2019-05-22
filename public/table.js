@@ -158,7 +158,7 @@
         'Actions': {
             formula: function(cell, item, cb) {
                 let links = [];
-                links.push({ link: 'products/label/' + item.sku + '/' + window.btoa(item.permalink), title: 'label' });
+                links.push({ link: 'products/label/' + item.sku + '/' + item.id, title: 'label' });
                 links.push({ link: item.permalink, title: 'view' });
                 links.push({ link: 'https://shopofthings.ch/wp-admin/post.php?post=' + item.id + '&action=edit', title: 'edit' });
                 let a = [];
