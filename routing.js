@@ -38,11 +38,10 @@ var basic = function(app, connection) {
         });
     });
     
-    app.get('/products/label/:sku/:id', auth.ensureAuthenticated, function(req, res) {
+    app.get('/products/label/:id', auth.ensureAuthenticated, function(req, res) {
         const label = require(__dirname + '/lib/label.js');
-        const sku = req.params.sku;
         const id = req.params.id;
-        label.product(sku, id, res, function(e, data) {
+        label.product(id, res, function(e, data) {
             //res.send(e ? e : data);
         });
     });
