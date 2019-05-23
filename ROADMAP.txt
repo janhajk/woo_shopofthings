@@ -19,7 +19,7 @@
 + show name of variations products
 + show total sales in table
 + change theme to admin theme
-
++ create Labels for Products via ID instead of URI-Data
 
 - show orders list
 - 
