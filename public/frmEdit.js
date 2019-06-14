@@ -1,6 +1,7 @@
 (function() {
 
       let bAlert = window.bAlert;
+      window.frmEdit = {};
 
       document.addEventListener('DOMContentLoaded', function() {
             window.frmEdit = new EditFrm();
