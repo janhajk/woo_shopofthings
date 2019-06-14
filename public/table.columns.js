@@ -1,7 +1,5 @@
 (function() {
       
-      let frmEditO = {frmEdit: window.frmEdit};
-      let frmEdit = frmEditO.frmEdit;
 
       /////////////////////////////////////////
       // Main Table
@@ -31,10 +29,10 @@
                   },
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'name';
-                              frmEdit.valueDom.value = item.name;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'name';
+                              window.frmEdit.valueDom.value = item.name;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
@@ -42,10 +40,10 @@
                   col: 'sku',
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'sku';
-                              frmEdit.valueDom.value = item.sku;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'sku';
+                              window.frmEdit.valueDom.value = item.sku;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
@@ -68,10 +66,10 @@
                   round: 2,
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'warehouse_cost';
-                              frmEdit.valueDom.value = item.warehouse_cost;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'warehouse_cost';
+                              window.frmEdit.valueDom.value = item.warehouse_cost;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
@@ -79,10 +77,10 @@
                   col: 'price',
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'price';
-                              frmEdit.valueDom.value = item.price;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'price';
+                              window.frmEdit.valueDom.value = item.price;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   },
                   round: 2
@@ -95,10 +93,10 @@
                   round: 0,
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'stock_quantity';
-                              frmEdit.valueDom.value = item.stock_quantity;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'stock_quantity';
+                              window.frmEdit.valueDom.value = item.stock_quantity;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
@@ -107,10 +105,10 @@
                   round: 0,
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'warehouse_min_warning';
-                              frmEdit.valueDom.value = item.warehouse_min_warning;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'warehouse_min_warning';
+                              window.frmEdit.valueDom.value = item.warehouse_min_warning;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
@@ -119,10 +117,10 @@
                   round: 0,
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'warehouse_min_alert';
-                              frmEdit.valueDom.value = item.warehouse_min_alert;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'warehouse_min_alert';
+                              window.frmEdit.valueDom.value = item.warehouse_min_alert;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
@@ -131,10 +129,10 @@
                   round: 0,
                   ondblclick: function(item) {
                         return function() {
-                              frmEdit.key = 'warehouse_ordered';
-                              frmEdit.valueDom.value = item.warehouse_ordered;
-                              frmEdit.item = item;
-                              frmEdit.show();
+                              window.frmEdit.key = 'warehouse_ordered';
+                              window.frmEdit.valueDom.value = item.warehouse_ordered;
+                              window.frmEdit.item = item;
+                              window.frmEdit.show();
                         };
                   }
             },
