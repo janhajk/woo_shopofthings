@@ -1,7 +1,7 @@
 (function() {
       
       let frmEditO = {frmEdit: window.frmEdit};
-      let frmEdit = frmEdit.frmEdit;
+      let frmEdit = frmEditO.frmEdit;
 
       /////////////////////////////////////////
       // Main Table
