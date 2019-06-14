@@ -1,6 +1,6 @@
 (function() {
       
-      const frmEdit = window.frmEdit;
+      let frmEdit = window.frmEdit;
 
       /////////////////////////////////////////
       // Main Table

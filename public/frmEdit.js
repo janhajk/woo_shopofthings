@@ -1,6 +1,6 @@
 (function() {
 
-      const bAlert = window.bAlert;
+      let bAlert = window.bAlert;
 
       document.addEventListener('DOMContentLoaded', function() {
             window.frmEdit = new EditFrm();
