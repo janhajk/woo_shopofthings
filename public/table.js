@@ -3,181 +3,13 @@
 
     var products;
     var frmLogin;
-    var frmEdit;
     var infoBlock;
-    var bAlert;
-    /////////////////////////////////////////
-    // Main Table
-    // Table Columns / Structure
-    // p  = parent        = cell
-    // pp = parent-parent = item
-    // hidden: true/false (default)
-    // formula: function(cell, product, cb){cb()}
-    // class: 'hidden-xs hidden-sm etc' bootstrap class
-    // image: {folder: '', filetype: 'png'}
-    // align: 'center/left/right'
-    // onclick: function(pp) {return function(){}}
-    // round: 2
-    // sort: 'desc'
-    var cols = {
-        'image': {
-            formula: function(cell, item, cb) {
-                let src = (item.images != undefined && item.images.length) ? item.images[0].src : item.image != undefined ? item.image.src : 'https://shopofthings.ch/wp-content/plugins/woocommerce/assets/images/placeholder.png';
-                cell.value = '<img src="' + src + '" height="50" />'
-                cb();
-            }
-        },
-        'Title': {
-            formula: function(cell, item, cb) {
-                cell.value = (!item.parent) ? item.name : '&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style:italic">' + item.attributes[0].option + ' (<span style=font-size:0.5em;>' + item.parent.name + '</span>)</span>';
-                cb();
-            },
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'name';
-                    frmEdit.valueDom.value = item.name;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'SKU': {
-            col: 'sku',
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'sku';
-                    frmEdit.valueDom.value = item.sku;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'Cost': {
-            formula: function(cell, item, cb) {
-                let p = '?';
-                for (let i in item.meta_data) {
-                    if (item.meta_data[i].key === '_purchase_price') {
-                        p = item.meta_data[i].value;
-                        break;
-                    }
-                }
-                cell.value = p;
-                cb();
-            },
-            round: 2
-        },
-        'Cost_new': {
-            col: 'warehouse_cost',
-            round: 2,
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'warehouse_cost';
-                    frmEdit.valueDom.value = item.warehouse_cost;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'Price': {
-            col: 'price',
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'price';
-                    frmEdit.valueDom.value = item.price;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            },
-            round: 2
-        },
-        'Shipping Class': {
-            col: 'shipping_class'
-        },
-        'Qty': {
-            col: 'stock_quantity',
-            round: 0,
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'stock_quantity';
-                    frmEdit.valueDom.value = item.stock_quantity;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'Qty 1': {
-            col: 'warehouse_min_warning',
-            round: 0,
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'warehouse_min_warning';
-                    frmEdit.valueDom.value = item.warehouse_min_warning;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'Qty 2': {
-            col: 'warehouse_min_alert',
-            round: 0,
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'warehouse_min_alert';
-                    frmEdit.valueDom.value = item.warehouse_min_alert;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'ordered': {
-            col: 'warehouse_ordered',
-            round: 0,
-            ondblclick: function(item) {
-                return function() {
-                    frmEdit.key = 'warehouse_ordered';
-                    frmEdit.valueDom.value = item.warehouse_ordered;
-                    frmEdit.item = item;
-                    frmEdit.show();
-                };
-            }
-        },
-        'sold': {
-            col: 'total_sales',
-            round: 0,
-        },
-        'Categories': {
-            formula: function(cell, item, cb) {
-                let cats = [];
-                for (let i in item.categories) {
-                    cats.push(item.categories[i].name);
-                }
-                cell.value = cats.join(', ');
-                cb();
-            }
-        },
-        'Actions': {
-            formula: function(cell, item, cb) {
-                let links = [];
-                links.push({ link: 'products/label/' + item.id, title: 'label' });
-                links.push({ link: item.permalink, title: 'view' });
-                links.push({ link: 'https://shopofthings.ch/wp-admin/post.php?post=' + item.id + '&action=edit', title: 'edit' });
-                let a = [];
-                for (let i in links) {
-                    a.push('<a href="' + links[i].link + '" target="_blank">' + links[i].title + '</a>');
-                }
-                cell.value = a.join('&nbsp;&#124;&nbsp;'); // |-Seperator
-                cb();
-            }
-        }
-    };
 
 
     document.addEventListener('DOMContentLoaded', function() {
 
         frmLogin = new Login();
-        frmEdit = new EditFrm();
         infoBlock = new InfoBlock();
-        bAlert = new BAlert();
         var content = document.getElementById('content');
 
         // Init positions collection
@@ -243,42 +75,6 @@
     });
 
 
-    var editKeyValueById = function(item, key, value, cb) {
-        var params = [item.id, key, window.btoa(value)];
-        let path = '/products/';
-        if (item.parent) {
-            path += item.parent + '/variations/' + params.join('/');
-        }
-        else {
-            path += params.join('/');
-        }
-        var request = new XMLHttpRequest();
-        request.open('GET', path, true);
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                try {
-                    var data = JSON.parse(request.responseText);
-                    console.log(data);
-                    cb();
-                }
-                catch (e) {
-                    console.log(e);
-                    console.log(new Date().toLocaleString() + ': not logged in');
-                    frmLogin.show();
-                    document.getElementById('content').innerHTML = 'Not logged in.';
-                }
-            }
-            else {
-                // Error
-            }
-        };
-        request.onerror = function() {
-            console.log('There was an error in xmlHttpRequest!');
-        };
-        request.send();
-    };
-
-
 
     /**
      * 
@@ -320,81 +116,6 @@
         };
     };
 
-    var EditFrm = function() {
-        var self = this;
-
-        this.key = null;
-        this.value = null;
-        this.id = null;
-        this.item = null;
-
-        var div = document.createElement('li');
-
-        var value = document.createElement('input');
-        value.type = "text";
-        this.valueDom = value;
-        value.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                editKeyValueById(self.item, self.key, value.value, function() {
-                    self.item[self.key] = value.value;
-                    self.item.update();
-                    this.key = null;
-                    this.value = null;
-                    this.id = null;
-                    this.item = null;
-                    self.hide();
-                    bAlert.show('value saved!', 'success');
-                });
-            }
-        });
-
-        var submit = document.createElement('button');
-        submit.type = "button";
-        submit.innerHTML = "save";
-        submit.className = 'btn-success';
-        submit.addEventListener('click', function() {
-            editKeyValueById(self.item, self.key, value.value, function() {
-                self.item[self.key] = value.value;
-                self.item.update();
-                this.key = null;
-                this.value = null;
-                this.id = null;
-                this.item = null;
-                self.hide();
-                bAlert.show('value saved!', 'success');
-            });
-        });
-
-        var cancel = document.createElement('button');
-        cancel.type = "button";
-        cancel.innerHTML = "cancel";
-        cancel.className = 'btn';
-        cancel.addEventListener('click', function() {
-            this.key = null;
-            this.value = null;
-            this.id = null;
-            this.item = null;
-            self.hide();
-        });
-
-        div.appendChild(value);
-        div.appendChild(submit);
-        div.appendChild(cancel);
-        document.getElementById('navbar').appendChild(div);
-        this.div = div;
-        div.style.display = 'none';
-        // div.style.float = 'left';
-        this.show = function() {
-            this.div.style.display = 'block';
-            // infoBlock.div.style.marginTop = '-30px';
-            this.valueDom.focus();
-            this.valueDom.select();
-        };
-        this.hide = function() {
-            this.div.style.display = 'none';
-            // infoBlock.div.style.marginTop = '';
-        };
-    };
 
 
     var InfoBlock = function() {
@@ -454,29 +175,7 @@
     };
 
 
-    var BAlert = function() {
-        var div = document.createElement('li');
-        div.role = 'alert';
-        document.getElementById('navbar').appendChild(div);
-        div.style.display = 'none';
-        var self = this;
-        this.div = div;
 
-        this.show = function(msg, type) {
-            self.div.innerHTML = msg;
-            self.div.className = 'alert alert-' + type;
-            self.div.style.display = 'block';
-            this.fadeOut(500);
-        };
-        this.hide = function() {
-            this.div.style.display = 'none';
-        };
-        this.fadeOut = function(timeout) {
-            window.setTimeout(function() {
-                return $(self.div).fadeOut(500);
-            }, timeout);
-        };
-    };
 
 
     /**
@@ -524,6 +223,7 @@
             var thead = document.createElement('thead');
             thead.class = 'thead-inverse';
             var tr = document.createElement('tr');
+            const cols = window.productTableCols;
             for (let c in cols) {
                 if (cols[c].hidden) continue;
                 let th = document.createElement('th');
@@ -686,6 +386,7 @@
          * 
          */
         this.load = function() {
+            const cols = window.productTableCols;
             for (let i in cols) {
                 let c = new Cell(i, cols[i], this); // function Cell(title, defaults, position)
                 this.row[i] = c;
