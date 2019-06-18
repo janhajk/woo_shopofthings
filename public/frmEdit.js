@@ -30,7 +30,7 @@
                               this.id = null;
                               this.item = null;
                               self.hide();
-                              bAlert.show('value saved!', 'success');
+                              window.bAlert.show('value saved!', 'success');
                         });
                   }
             });
@@ -48,7 +48,7 @@
                         this.id = null;
                         this.item = null;
                         self.hide();
-                        bAlert.show('value saved!', 'success');
+                        window.bAlert.show('value saved!', 'success');
                   });
             });
 
