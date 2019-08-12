@@ -143,14 +143,14 @@
             'Umsatz': {
                   formula: function(cell, item, cb) {
                         let n = Math.round(item.total_sales * item.price);
-                        cell.value = isNaN(n)?n:0;
+                        cell.value = isNaN(n)?0:n;
                         cb();
                   }
             },
             'Gewinn': {
                   formula: function(cell, item, cb) {
                         let n = Math.round(item.total_sales * (item.price - item.warehouse_cost));
-                        cell.value = isNaN(n)?n:0;
+                        cell.value = isNaN(n)?0:n;
                         cb();
                   }
             },
