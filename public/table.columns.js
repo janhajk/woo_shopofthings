@@ -85,6 +85,16 @@
                   },
                   round: 2
             },
+            'Marge': {
+                  formula: function(cell, item, cb) {
+                        let n = item.price / item.warehouse_cost;
+                        n = isNaN(n) ? 0 : n;
+                        cell.value = Math.round(n) + '%';
+                        cb();
+                  },
+                  align: 'right',
+                  round: 0
+            },
             'Shipping Class': {
                   col: 'shipping_class'
             },
@@ -151,7 +161,7 @@
             },
             'Gewinn': {
                   formula: function(cell, item, cb) {
-                        let n =item.total_sales * (item.price - item.warehouse_cost);
+                        let n = item.total_sales * (item.price - item.warehouse_cost);
                         cell.value = isNaN(n) ? 0 : n;
                         cb();
                   },
