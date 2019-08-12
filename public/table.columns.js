@@ -188,7 +188,7 @@
                         if (typeof item.warehouse_orderids !== 'undefined') {
                               for (let i = 0; i < item.warehouse_orderids.length; i++) {
                                     let order = item.warehouse_orderids[i];
-                                    links.push({ link: 'https://www.aliexpress.com/snapshot/0.html?orderId=1' + order.value, title: order.type });
+                                    links.push({ link: 'https://www.aliexpress.com/snapshot/0.html?orderId=' + order.id, title: order.type });
                               }
                         }
                         let a = [];
