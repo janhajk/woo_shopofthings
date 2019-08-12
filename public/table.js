@@ -416,6 +416,7 @@
             };
             tr.onmouseout = function() {
                 tr.style.backgroundColor = (self.parent) ? '#f9f9c5' : '#FFF';
+                if (self.status === 'draft') tr.style.backgroundColor = '#cff4fc';
             };
 
             for (let i in cells) {
