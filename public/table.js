@@ -410,6 +410,7 @@
 
             // Variation with different Background color
             tr.style.backgroundColor = (this.parent) ? '#f9f9c5' : '#FFF';
+            if (self.status === 'draft') tr.style.backgroundColor = '#cff4fc';
             tr.onmouseover = function() {
                 tr.style.backgroundColor = '#f7c0c0';
             };

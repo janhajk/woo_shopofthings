@@ -1,5 +1,5 @@
 (function() {
-      
+
 
       /////////////////////////////////////////
       // Main Table
@@ -139,6 +139,18 @@
             'sold': {
                   col: 'total_sales',
                   round: 0,
+            },
+            'Umsatz': {
+                  formula: function(cell, item, cb) {
+                        cell.value = item.total_sales * item.price;
+                        cb();
+                  }
+            },
+            'Gewinn': {
+                  formula: function(cell, item, cb) {
+                        cell.value = item.total_sales * (item.price - item.warehouse_cost);
+                        cb();
+                  }
             },
             'Categories': {
                   formula: function(cell, item, cb) {
