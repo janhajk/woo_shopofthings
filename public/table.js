@@ -122,6 +122,7 @@
         this.info = [
             { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0, factor: 8 },
             { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0, factor: 8 },
+            { type: 'sum', col: 14, label: 'Total Gewinn', value: 0 }
         ];
         let div = document.createElement('li');
         div.style.display = 'table';
@@ -160,7 +161,7 @@
                     for (let s in this.info) {
                         if (this.info[s].type === 'sum') {
                             let val = tr[i].cells[this.info[s].col].innerHTML;
-                            let factor = tr[i].cells[this.info[s].factor].innerHTML;
+                            let factor = (this.info[s].factor !== undefined) ? tr[i].cells[this.info[s].factor].innerHTML : 1;
                             if (!isNaN(val)) {
                                 this.info[s].value += Number(val) * Number(factor);
                             }
