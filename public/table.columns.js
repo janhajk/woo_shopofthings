@@ -142,19 +142,21 @@
             },
             'Umsatz': {
                   formula: function(cell, item, cb) {
-                        let n = Math.round(item.total_sales * item.price);
-                        cell.value = +isNaN(n)?0:n;
+                        let n = item.total_sales * item.price;
+                        cell.value = isNaN(n) ? 0 : n;
                         cb();
                   },
-                  align: 'right'
+                  align: 'right',
+                  round: 0
             },
             'Gewinn': {
                   formula: function(cell, item, cb) {
-                        let n = Math.round(item.total_sales * (item.price - item.warehouse_cost));
-                        cell.value = +isNaN(n)?0:n;
+                        let n =item.total_sales * (item.price - item.warehouse_cost);
+                        cell.value = isNaN(n) ? 0 : n;
                         cb();
                   },
-                  align: 'right'
+                  align: 'right',
+                  round: 0
             },
             'Categories': {
                   formula: function(cell, item, cb) {
