@@ -24,8 +24,8 @@
 
             button.addEventListener('click', function() {
                   let title = prompt('Title of the new Product');
-                  let snapshot = prompt('URL of the Purchase-Site');
-                  let params = 'title=' + title + '&snapshot=' + snapshot;
+                  let orderID = prompt('Order ID');
+                  let params = 'title=' + title + '&orderid=' + orderID;
                   let request = new XMLHttpRequest();
                   request.open('POST', '/products/add', true);
                   request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
