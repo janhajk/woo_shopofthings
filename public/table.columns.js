@@ -185,9 +185,11 @@
                         links.push({ link: 'products/label/' + item.id, title: 'label' });
                         links.push({ link: item.permalink, title: 'view' });
                         links.push({ link: 'https://shopofthings.ch/wp-admin/post.php?post=' + item.id + '&action=edit', title: 'edit' });
-                        for (let i=0;i<item.warehouse_orderids.length;i++) {
-                              let order = item.warehouse_orderids[i];
-                              links.push({ link: 'https://www.aliexpress.com/snapshot/0.html?orderId=1' + order.value, title: order.type });
+                        if (typeof item.warehouse_orderids !== undefined) {
+                              for (let i = 0; i < item.warehouse_orderids.length; i++) {
+                                    let order = item.warehouse_orderids[i];
+                                    links.push({ link: 'https://www.aliexpress.com/snapshot/0.html?orderId=1' + order.value, title: order.type });
+                              }
                         }
                         let a = [];
                         for (let i in links) {
