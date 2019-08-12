@@ -120,8 +120,8 @@
 
     var InfoBlock = function() {
         this.info = [
-            { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0, factor: 7 },
-            { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0, factor: 7 },
+            { type: 'sum', col: 4, label: 'Total Einkaufpreis', value: 0, factor: 8 },
+            { type: 'sum', col: 5, label: 'Total Verkaufspreis', value: 0, factor: 8 },
         ];
         let div = document.createElement('li');
         div.style.display = 'table';
