@@ -89,6 +89,7 @@
                   formula: function(cell, item, cb) {
                         let n = item.price / item.warehouse_cost;
                         n = isNaN(n) ? 0 : n;
+                        n = n * 100;
                         cell.value = Math.round(n) + '%';
                         cb();
                   },
