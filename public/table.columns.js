@@ -185,6 +185,7 @@
                         links.push({ link: 'products/label/' + item.id, title: 'label' });
                         links.push({ link: item.permalink, title: 'view' });
                         links.push({ link: 'https://shopofthings.ch/wp-admin/post.php?post=' + item.id + '&action=edit', title: 'edit' });
+                        links.push({ link: item.warehouse_link, title: 'AliExpress' });
                         let a = [];
                         for (let i in links) {
                               a.push('<a href="' + links[i].link + '" target="_blank">' + links[i].title + '</a>');
