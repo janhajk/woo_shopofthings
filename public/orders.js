@@ -55,16 +55,17 @@
                   };
                   request.send();
             };
-            
+
             this.render = function() {
                   let content = [];
                   for (var i in this.orders) {
-                        content.push('<a href="/label/adress/'+this.orders[i].id+'">' + this.orders[i].id + '</a>');
+                        let title = this.orders[i].billing.first_name + ' ' + this.orders[i].billing.last_name;
+                        content.push('<a href="/label/adress/' + this.orders[i].id + '" title="' + title + '">' + this.orders[i].id + '</a>');
                   }
                   this.content.innerHTML = content.join('&nbsp;|&nbsp;');
             };
       };
-      
+
 
 
 })();
