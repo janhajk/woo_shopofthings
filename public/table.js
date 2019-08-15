@@ -300,8 +300,8 @@
             // Filter Buttons
             var fButtons = [
                 { title: 'All', col1: 0, col2: 1 },
-                { title: 'Qt1', col1: 8, col2: 7 },
-                { title: 'Qt2', col1: 9, col2: 7 }
+                { title: 'Qt1', col1: 9, col2: 8 },
+                { title: 'Qt2', col1: 10, col2: 8 }
             ];
             var filterByQty = function(col1, col2) {
                 let table = tbody;
