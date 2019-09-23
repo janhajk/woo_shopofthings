@@ -31,17 +31,10 @@ var basic = function(app, connection) {
         });
     });
     
-    app.get('/products_public', function(req, res) {
-        const woo = require(__dirname + '/lib/woo.js');
-        woo.products_public(connection, function(e, data) {
-            res.send(e ? e : data);
-        });
-    });
-    
     app.get('/products_public_v2', function(req, res) {
         utils.log('loading products v2');
         const woo = require(__dirname + '/lib/woo.js');
-        woo.products_public_new(connection, function(e, data) {
+        woo.products_public(connection, function(e, data) {
             res.send(e ? e : data);
         });
     });
