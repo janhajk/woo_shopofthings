@@ -38,6 +38,13 @@ var basic = function(app, connection) {
         });
     });
     
+    app.get('/products_public_v2', function(req, res) {
+        const woo = require(__dirname + '/lib/woo.js');
+        woo.products_public_new(connection, function(e, data) {
+            res.send(e ? e : data);
+        });
+    });
+    
     app.get('/products/label/:id', auth.ensureAuthenticated, function(req, res) {
         const label = require(__dirname + '/lib/label.js');
         const id = req.params.id;
