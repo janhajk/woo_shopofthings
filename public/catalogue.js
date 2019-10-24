@@ -58,15 +58,19 @@
 
         var content = document.getElementById('content');
         if (typeof catalogueRunOnce === 'undefined') {
-            
-            var divSpinner = document.createElement('img');
-            divSpinner.src = 'https://shopofthings.ch/wp-content/uploads/2019/03/Matrix-3.8s-200x200px.gif';
-            divSpinner.style.margin = '0 auto';
-            var divSpinnerContainer = document.createElement('div');
-            divSpinnerContainer.style.width = '100%';
-            divSpinnerContainer.appendChild(divSpinner);
-            content.appendChild(divSpinnerContainer);
-            
+
+            // var divSpinner = document.createElement('img');
+            // divSpinner.src = 'https://shopofthings.ch/wp-content/uploads/2019/03/Matrix-3.8s-200x200px.gif';
+            // divSpinner.style.margin = '0 auto';
+            // var divSpinnerContainer = document.createElement('div');
+            // divSpinnerContainer.style.width = '100%';
+            // divSpinnerContainer.appendChild(divSpinner);
+            // content.appendChild(divSpinnerContainer);
+            let pb = new Progressbar(content, 10000, function(pbContainer) {
+                content.removeChild(pbContainer);
+            });
+
+
             // Init positions collection
             products = new Products(content);
             /**
@@ -80,7 +84,7 @@
 
             catalogueRunOnce = true;
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://admin.shopofthings.ch/products_public', true);
+            request.open('GET', 'https://admin.shopofthings.ch/products_public_v2', true);
             request.onload = function() {
                 if (request.status >= 200 && request.status < 405) {
                     try {
@@ -93,7 +97,7 @@
                             products.add(product);
                         }
                         products.tableRender();
-                        content.removeChild(divSpinnerContainer);
+                        // content.removeChild(divSpinnerContainer);
                     }
                     catch (e) {
                         console.log(e);
@@ -520,6 +524,50 @@
         if (number < 100) return 2;
         if (number < 1000) return 1;
         return 0;
+    };
+
+
+    var Progressbar = function(target, duration, finished) {
+
+        let timer;
+
+        let div = document.createElement('div');
+        div.className = 'progress';
+        div.style.maxWidth = '500px';
+        div.style.marginLeft = 'auto';
+        div.style.marginRight = 'auto';
+        let bar = document.createElement('div');
+        bar.className = 'progress-bar progress-bar-striped';
+        bar.setAttribute('role', 'progressbar');
+        bar.setAttribute('aria-valuenow', '0');
+        bar.setAttribute('aria-valuemin', '0');
+        bar.setAttribute('aria-valuemax', '100');
+        bar.style.width = '0%';
+        bar.innerHTML = '0%';
+        div.appendChild(bar);
+
+
+        target.appendChild(div);
+
+
+        const update = function(value) {
+            bar.setAttribute('aria-valuenow', value);
+            bar.style.width = parseInt(value, 10) + '%';
+            bar.innerHTML = parseInt(value, 10) + '%';
+        };
+
+        const start = function(duration) {
+            let progress = 0;
+            timer = window.setInterval(function() {
+                progress += 10;
+                update(progress);
+                if (progress === 100) {
+                    finished(div);
+                }
+            }, parseInt(duration / 10, 10));
+        };
+
+        start(duration);
     };
 
 })();
