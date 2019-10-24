@@ -104,7 +104,14 @@ var basic = function(app, connection) {
     app.get('/feeds/comparis', function(req, res) {
         const woo = require(__dirname + '/lib/woo.js');
         woo.comparis(connection, function(e, data) {
-            utils.csvExport(res, data, 'comparis.csv');
+            utils.csvExport(res, data, 'comparis');
+        });
+    });
+    
+    app.get('/feeds/toppreise', function(req, res) {
+        const woo = require(__dirname + '/lib/woo.js');
+        woo.toppreise(connection, function(e, data) {
+            utils.csvExport(res, data, 'comparis');
         });
     });
     
