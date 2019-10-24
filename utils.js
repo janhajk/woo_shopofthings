@@ -127,13 +127,12 @@ let array2csv = function(data) {
 exports.array2csv = array2csv;
 
 
-let csvExport = function(res, data, filename) {
-      let csv = array2csv(data);
+let csvExport = function(res, csvData, filename) {
       res.writeHead(200, {
             'Content-Type': 'text/csv; charset=utf-8',
             'Content-Disposition': 'attchment; filename=' + filename + '.csv'
       });
-      res.write('﻿' + csv);
+      res.write('﻿' + csvData);
       res.end();
 };
 exports.csvExport = csvExport;
