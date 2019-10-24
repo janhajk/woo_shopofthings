@@ -111,7 +111,7 @@ var basic = function(app, connection) {
     app.get('/feeds/toppreise', function(req, res) {
         const woo = require(__dirname + '/lib/woo.js');
         woo.toppreise(connection, function(e, data) {
-            utils.csvExport(res, data, 'comparis');
+            utils.csvExport(res, data, 'toppreise');
         });
     });
     
