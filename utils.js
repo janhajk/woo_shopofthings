@@ -1,16 +1,16 @@
-var fs       = require('fs');
-var path     = require('path');
-var config   = require(__dirname + '/config.js');
+var fs = require('fs');
+var path = require('path');
+var config = require(__dirname + '/config.js');
 
 
 
-var date2timestamp = function(y,m,d,h,m,s) {
-    return (new Date(y,m,d,h,m,s).getTime() / 1000);
+var date2timestamp = function(y, m, d, h, m, s) {
+      return (new Date(y, m, d, h, m, s).getTime() / 1000);
 };
 exports.date2timestamp = date2timestamp;
 
 var getFilesizeInBytes = function(filename) {
-    return (fs.statSync(filename)).size;
+      return (fs.statSync(filename)).size;
 };
 exports.getFilesizeInBytes = getFilesizeInBytes;
 
@@ -22,26 +22,26 @@ exports.getFilesizeInBytes = getFilesizeInBytes;
  */
 
 var log = function l(log, type) {
-   if (log === '-') log = '------------------------------------------------------------------------------------------';
-   else if (typeof log === 'string') {
-      log = new Date().toLocaleString() + ': ' + log;
-   }
-   if (type === 'header') {
-      l('-');
-   }
-   if (type === 'fatal') {
-      console.log(log);
-   }
-   if (type === 'mysql') {
-       console.log('There was an error in your mysql');
-       console.log(log);
-   }
-   else if(config.dev) {
-      console.log(log);
-   }
-   if (type === 'header') {
-      l('-');
-   }
+      if (log === '-') log = '------------------------------------------------------------------------------------------';
+      else if (typeof log === 'string') {
+            log = new Date().toLocaleString() + ': ' + log;
+      }
+      if (type === 'header') {
+            l('-');
+      }
+      if (type === 'fatal') {
+            console.log(log);
+      }
+      if (type === 'mysql') {
+            console.log('There was an error in your mysql');
+            console.log(log);
+      }
+      else if (config.dev) {
+            console.log(log);
+      }
+      if (type === 'header') {
+            l('-');
+      }
 };
 exports.log = log;
 
@@ -98,7 +98,92 @@ so therefore they (should) work on any platform.
 
 
 var flatten = function(arr) {
-  return arr.reduce(function (flat, toFlatten) {
-    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
-  }, []);
-}
+      return arr.reduce(function(flat, toFlatten) {
+            return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+      }, []);
+};
+
+
+
+let array2csv = function(data) {
+      var file = "";
+      // go trough all array elements and convert strings to csv-Strings ""
+      for (let i = 0; i < data.length; i++) {
+            var line = "";
+            for (let r = 0; r < data[i].length; r++) {
+                  if (typeof data[i][r] !== 'number') {
+                        data[i][r] = '"' + data[i][r] + '"';
+                  }
+            }
+      }
+      // go trough rows and add cols
+      for (let i = 0; i < data.length; i++) {
+            line = data[i].join(';');
+            line += "\n";
+            file += line;
+      }
+      return file;
+};
+exports.array2csv = array2csv;
+
+
+let csvExport = function(res, data, filename) {
+      let csv = array2csv(data);
+      res.writeHead(200, {
+            'Content-Type': 'text/csv; charset=utf-8',
+            'Content-Disposition': 'attchment; filename=' + filename + '.csv'
+      });
+      res.write('﻿' + csv);
+      res.end();
+};
+exports.csvExport = csvExport;
+
+
+
+/*	This work is licensed under Creative Commons GNU LGPL License.
+
+	License: http://creativecommons.org/licenses/LGPL/2.1/
+   Version: 0.9
+	Author:  Stefan Goessner/2006
+	Web:     http://goessner.net/ 
+*/
+const json2xml = function(o, tab) {
+      var toXml = function(v, name, ind) {
+                  var xml = "";
+                  if (v instanceof Array) {
+                        for (var i = 0, n = v.length; i < n; i++)
+                              xml += ind + toXml(v[i], name, ind + "\t") + "\n";
+                  }
+                  else if (typeof(v) == "object") {
+                        var hasChild = false;
+                        xml += ind + "<" + name;
+                        for (var m in v) {
+                              if (m.charAt(0) == "@")
+                                    xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
+                              else
+                                    hasChild = true;
+                        }
+                        xml += hasChild ? ">" : "/>";
+                        if (hasChild) {
+                              for (var m in v) {
+                                    if (m == "#text")
+                                          xml += v[m];
+                                    else if (m == "#cdata")
+                                          xml += "<![CDATA[" + v[m] + "]]>";
+                                    else if (m.charAt(0) != "@")
+                                          xml += toXml(v[m], m, ind + "\t");
+                              }
+                              xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "") + "</" + name + ">";
+                        }
+                  }
+                  else {
+                        xml += ind + "<" + name + ">" + v.toString() + "</" + name + ">";
+                  }
+                  return xml;
+            },
+            xml = "";
+      for (var m in o)
+            xml += toXml(o[m], m, "");
+      return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+};
+exports.json2xml = json2xml;
