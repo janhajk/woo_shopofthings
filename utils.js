@@ -186,3 +186,15 @@ const json2xml = function(o, tab) {
       return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
 };
 exports.json2xml = json2xml;
+
+
+
+const cloneObj = function(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+};
+exports.cloneObj = cloneObj;
